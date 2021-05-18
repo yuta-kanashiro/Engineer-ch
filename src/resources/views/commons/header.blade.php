@@ -10,7 +10,7 @@
             <div class="navbar-nav">
                 @guest
                     <a class="nav-item nav-link text-white" href="{{ route('register') }}">新規登録</a>
-                    <a class="nav-item nav-link text-white" href="">ログイン</a>
+                    <a class="nav-item nav-link text-white" href="{{ route('login') }}">ログイン</a>
                 @endguest
 
                 @auth

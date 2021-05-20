@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
         [
             'name' => 'sample1',
             'email' => 'sample1@sample.com',
-            'birthday' => '1998-07-13 00:00:00',
+            'age' => '21',
             'prefecture' => '北海道',
             'password' => bcrypt('sample1'),
             'profile_image' => 'https://placehold.jp/50x50.png',
@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
         [
             'name' => 'sample2',
             'email' => 'sample2@sample.com',
-            'birthday' => '1998-08-13 00:00:00',
+            'age' => '22',
             'prefecture' => '東京都',
             'password' => bcrypt('sample2'),
             'profile_image' => 'https://placehold.jp/50x50.png',
@@ -37,7 +37,7 @@ class UsersTableSeeder extends Seeder
         [
             'name' => 'sample3',
             'email' => 'sample3@sample.com',
-            'birthday' => '1998-09-13 00:00:00',
+            'age' => '23',
             'prefecture' => '名古屋県',
             'password' => bcrypt('sample3'),
             'profile_image' => 'https://placehold.jp/50x50.png',
@@ -48,7 +48,7 @@ class UsersTableSeeder extends Seeder
         [
             'name' => 'sample4',
             'email' => 'sample4@sample.com',
-            'birthday' => '1998-10-13 00:00:00',
+            'age' => '24',
             'prefecture' => '大阪府',
             'password' => bcrypt('sample4'),
             'profile_image' => 'https://placehold.jp/50x50.png',
@@ -59,7 +59,7 @@ class UsersTableSeeder extends Seeder
         [
             'name' => 'sample5',
             'email' => 'sample5@sample.com',
-            'birthday' => '1998-11-13 00:00:00',
+            'age' => '25',
             'prefecture' => '福岡県',
             'password' => bcrypt('sample5'),
             'profile_image' => 'https://placehold.jp/50x50.png',

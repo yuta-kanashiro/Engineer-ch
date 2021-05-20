@@ -46,7 +46,7 @@
                                 <div class="col-md-6">
                                     <select id="age" class="form-control @error('age') is-invalid @enderror" name="age" required>
                                         <option value='' disabled selected style='display:none;'>選択してください</option>
-                                        @foreach(config('age') as $age )
+                                        @foreach(config('ages') as $age )
                                             <option value="{{ $age }}" @if(old('age') == $age) selected @endif>{{ $age }}</option>
                                         @endforeach
                                     </select>
@@ -59,15 +59,15 @@
                             </div>
 
                             <div class="form-group row pb-2">
-                                <label for="prefecture_id" class="mt-2 col-md-4 text-md-right">{{ __('都道府県') }}<span class="text-danger">(※)</span></label>
+                                <label for="prefecture" class="mt-2 col-md-4 text-md-right">{{ __('都道府県') }}<span class="text-danger">(※)</span></label>
                                 <div class="col-md-6">
-                                    <select id="prefecture_id" class="form-control @error('prefecture_id') is-invalid @enderror" name="prefecture_id" required autocomplete="prefecture_id">
+                                    <select id="prefecture" class="form-control @error('prefecture') is-invalid @enderror" name="prefecture" required autocomplete="prefecture">
                                         <option value='' disabled selected style='display:none;'>選択してください</option>
-                                        @foreach(config('prefecture') as $prefecture  => $name)
-                                            <option value="{{ $prefecture }}" @if(old('prefecture_id') == $prefecture) selected @endif>{{ $name }}</option>
+                                        @foreach(config('prefecturies') as $prefecture)
+                                            <option value="{{ $prefecture }}" @if(old('prefecture') == $prefecture) selected @endif>{{ $prefecture }}</option>
                                         @endforeach
                                     </select>
-                                    @error('prefecture_id')
+                                    @error('prefecture')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -90,8 +90,7 @@
                             <div class="form-group row pb-2">
                                 <label for="password" class="mt-2 col-md-4 text-md-right">{{ __('パスワード確認') }}<span class="text-danger">(※)</span></label>
                                 <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="********">
-                                    <small>確認のためパスワードを再度入力してください。</small>
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="********">
                                 </div>
                             </div>
 

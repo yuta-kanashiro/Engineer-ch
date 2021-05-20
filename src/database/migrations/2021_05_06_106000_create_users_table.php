@@ -15,14 +15,14 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->index()->comment('ニックネーム');
             $table->string('email')->unique();
             $table->date('birthday');
-            $table->unsignedInteger('prefecture_id')->index();
+            $table->string('prefecture')->index();
             $table->string('password');
+            $table->string('profile_image')->nullable()->comment('プロフィール画像');
+            $table->string('introduction')->nullable()->comment('紹介文');
             $table->timestamps();
-
-            $table->foreign('prefecture_id')->references('id')->on('prefecturies')->onDelete('cascade');
         });
     }
 

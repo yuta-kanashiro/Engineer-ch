@@ -17,6 +17,7 @@ class CreateBulletinsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('title')->comment('タイトル')->index();
+            $table->integer('limited_id')->comment('限定公開ID');
             $table->timestamps();
             $table->softDeletes();
 

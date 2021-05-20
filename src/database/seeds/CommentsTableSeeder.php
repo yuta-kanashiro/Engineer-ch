@@ -47,6 +47,41 @@ class CommentsTableSeeder extends Seeder
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
         ],
+        [
+            'user_id' => '1',
+            'bulletin_id' => '7',
+            'comment' => 'PHPについて',
+            'created_at' => '2021-03-01 07:25:42',
+            'updated_at' => '2021-03-02 07:25:42'
+        ],
+        [
+            'user_id' => '2',
+            'bulletin_id' => '8',
+            'comment' => 'Vue.jsについて',
+            'created_at' => '2021-03-01 07:25:42',
+            'updated_at' => '2021-03-02 07:25:42'
+        ],
+        [
+            'user_id' => '3',
+            'bulletin_id' => '9',
+            'comment' => 'Dockerについて',
+            'created_at' => '2021-03-01 07:25:42',
+            'updated_at' => '2021-03-02 07:25:42'
+        ],
+        [
+            'user_id' => '4',
+            'bulletin_id' => '10',
+            'comment' => 'MDBootstrapについて',
+            'created_at' => '2021-03-01 07:25:42',
+            'updated_at' => '2021-03-02 07:25:42'
+        ],
+        [
+            'user_id' => '5',
+            'bulletin_id' => '6',
+            'comment' => 'Laravelについて',
+            'created_at' => '2021-03-01 07:25:42',
+            'updated_at' => '2021-03-02 07:25:42'
+        ],
         ]);
     }
 }

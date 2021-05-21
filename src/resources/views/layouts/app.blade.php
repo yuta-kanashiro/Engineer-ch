@@ -26,18 +26,15 @@
                         <h3 class="card-title border-bottom mb-3" style="padding:10px;">Menu</h3>
                         @guest
                             <a href="{{ route('login') }}" class="my-2 text-dark border-bottom">みんなの掲示板</a>
-                            <a href="{{ route('login') }}" class="my-2 text-dark border-bottom">自分たちだけの掲示板</a>
+                            <a href="{{ route('login') }}" class="my-2 text-dark border-bottom">ともだちの掲示板</a>
                             <a href="{{ route('login') }}" class="my-2 text-dark border-bottom">勉強メモ</a>
+                            <a href="{{ route('login') }}" class="my-2 text-dark border-bottom">マイページ</a>
                         @endguest
                         @auth
                             <a href="" class="my-2 text-dark border-bottom">みんなの掲示板</a>
-                            <a href="" class="my-2 text-dark border-bottom">自分たちだけの掲示板</a>
+                            <a href="" class="my-2 text-dark border-bottom">ともだちの掲示板</a>
                             <a href="" class="my-2 text-dark border-bottom">勉強メモ</a>
-                            <a href="" class="my-2 text-dark border-bottom">マイページ</a>
-                            <form class="my-2 mt-5" action="{{ route('logout')}}" method="POST" name="logout">
-                                @csrf
-                                <button class="rounded bg-light" type="submit" href="javascript:logout.submit()">ログアウト</button>
-                            </form>
+                            <a href="{{ route('user.show', Auth::user()) }}" class="my-2 text-dark border-bottom">マイページ</a>
                         @endauth
                     </div>
                 </div>

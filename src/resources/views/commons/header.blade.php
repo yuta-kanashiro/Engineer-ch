@@ -14,7 +14,10 @@
                 @endguest
 
                 @auth
-                    <a class="nav-item nav-link text-white" href="">掲示板に投稿する</a>
+                    <form class="mt-2" action="{{ route('logout')}}" method="POST" name="logout">
+                        @csrf
+                        <a class="nav-link text-white" href="javascript:logout.submit()">ログアウト</a>
+                    </form>
                 @endauth
             </div>
         </div>

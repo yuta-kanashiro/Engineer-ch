@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header mb-3">
                         <h4 class="text-center mt-2">{{ __('ログイン') }}</h4>
@@ -37,12 +37,14 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <div class="d-flex justify-content-center mb-3">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('ログイン') }}
-                                    </button>
-                                </div>
+                            <div class="d-flex justify-content-center mb-3">
+                                <a href="{{ route('register') }}"><small>{{ __('アカウント登録から始める') }}</small></a>
+                            </div>
+
+                            <div class="d-flex justify-content-center mb-3">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('ログイン') }}
+                                </button>
                             </div>
                         </form>
                     </div>

@@ -20,7 +20,32 @@
         @include('commons.header')
 
         <div class="container">
-            @yield('content')
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card btn-group-vertical py-3 pl-4">
+                        <h3 class="card-title border-bottom mb-3" style="padding:10px;">Menu</h3>
+                        @guest
+                            <a href="{{ route('login') }}" class="my-2 text-dark border-bottom">みんなの掲示板</a>
+                            <a href="{{ route('login') }}" class="my-2 text-dark border-bottom">自分たちだけの掲示板</a>
+                            <a href="{{ route('login') }}" class="my-2 text-dark border-bottom">勉強メモ</a>
+                        @endguest
+                        @auth
+                            <a href="" class="my-2 text-dark border-bottom">みんなの掲示板</a>
+                            <a href="" class="my-2 text-dark border-bottom">自分たちだけの掲示板</a>
+                            <a href="" class="my-2 text-dark border-bottom">勉強メモ</a>
+                            <a href="" class="my-2 text-dark border-bottom">マイページ</a>
+                            <form class="my-2 mt-5" action="{{ route('logout')}}" method="POST" name="logout">
+                                @csrf
+                                <button class="rounded bg-light" type="submit" href="javascript:logout.submit()">ログアウト</button>
+                            </form>
+                        @endauth
+                    </div>
+                </div>
+                <div class="col-md-1 border-left"></div>
+                <div class="col-md-8">
+                    @yield('content')
+                </div>
+            </div>
         </div>
 
         <!-- JQuery -->

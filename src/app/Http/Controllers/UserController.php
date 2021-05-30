@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Bulletin;
 
 class UserController extends Controller
 {
@@ -46,7 +47,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        // ddd($user->profile_image);
+        $bulletins = Bulletin::where('user_id',$user->id)->orderBy('created_at','desc')->with(['user'])->get();
+        return view('users.mypage', compact('user', 'bulletins'));
     }
 
     /**

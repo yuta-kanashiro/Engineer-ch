@@ -1,25 +1,42 @@
 <header class="mb-5">
-    <nav class="navbar navbar-expand-sm tempting-azure-gradient navbar-dark">
-
-        <a class="navbar-brand" style="font-size:2rem;" href="/">Engineer-ch</a>
-
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-            <div class="navbar-nav">
-                @guest
-                    <a class="nav-item nav-link text-white" href="{{ route('register') }}">新規登録</a>
-                    <a class="nav-item nav-link text-white" href="{{ route('login') }}">ログイン</a>
-                @endguest
-
-                @auth
-                    <form class="mt-2" action="{{ route('logout')}}" method="POST" name="logout">
-                        @csrf
-                        <a class="nav-link text-white" href="javascript:logout.submit()">ログアウト</a>
-                    </form>
-                @endauth
+    <body class="drawer drawer--left drawer--navbarTopGutter winter-neva-gradient">
+        <header class="drawer-navbar drawer-navbar--fixed" role="banner">
+            <div class="drawer-container">
+                <div class="drawer-navbar-header">
+                    <a class="drawer-brand text-info" href="/">Engineer-ch</a>
+                    <button type="button" class="drawer-toggle drawer-hamburger">
+                        <span class="sr-only">toggle navigation</span>
+                        <span class="drawer-hamburger-icon"></span>
+                    </button>
+                </div>
+                <nav class="drawer-nav ml-auto" role="navigation">
+                    <ul class="drawer-menu">
+                        @guest
+                        <li><a href="{{ route('login') }}" class="drawer-menu-item text-dark border-bottom">みんなの掲示板</a></li>
+                        <li><a href="{{ route('login') }}" class="drawer-menu-item text-dark border-bottom">ともだちの掲示板</a></li>
+                        <li><a href="{{ route('login') }}" class="drawer-menu-item text-dark border-bottom">勉強メモ</a></li>
+                        <li><a href="{{ route('login') }}" class="drawer-menu-item text-dark border-bottom">マイページ</a></li>
+                        <li><a href="{{ route('register') }}" class="drawer-menu-item text-dark border-bottom">新規登録</a></li>
+                        <li><a href="{{ route('login') }}" class="drawer-menu-item text-dark border-bottom">ログイン</a></li>
+                        @endguest
+                        @auth
+                        <li><a href="" class="drawer-menu-item text-dark border-bottom">みんなの掲示板</a></li>
+                        <li><a href="" class="drawer-menu-item text-dark border-bottom">ともだちの掲示板</a></li>
+                        <li><a href="" class="drawer-menu-item text-dark border-bottom">勉強メモ</a></li>
+                        <li><a href="{{ route('user.show', Auth::user()) }}" class="drawer-menu-item text-dark border-bottom">マイページ</a></li>
+                        <li>
+                            <form class="mt-2 ml-2" action="{{ route('logout')}}" method="POST" name="logout">
+                                @csrf
+                                <button class="nav-link rounded-pill bg-light" href="javascript:logout.submit()">ログアウト</button>
+                            </form>
+                        </li>
+                        @endauth
+                    </ul>
+                </nav>
             </div>
-        </div>
-    </nav>
+        </header>
+        <main role="main">
+            <!-- Page content -->
+        </main>
+    </body>
 </header>

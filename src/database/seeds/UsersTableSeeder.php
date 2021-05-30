@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'prefecture' => '北海道',
             'password' => bcrypt('sample1'),
             'profile_image' => 'https://placehold.jp/50x50.png',
-            'introduction' => 'sample1です',
+            'introduction' => 'sample1ですsample1ですsample1ですsample1ですsample1ですsample1ですsample1ですsample1です',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
         ],
@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
             'prefecture' => '東京都',
             'password' => bcrypt('sample2'),
             'profile_image' => 'https://placehold.jp/50x50.png',
-            'introduction' => 'sample2です',
+            'introduction' => 'sample2ですsample2ですsample2ですsample2ですsample2ですsample2ですsample2ですsample2です',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
         ],
@@ -41,7 +41,7 @@ class UsersTableSeeder extends Seeder
             'prefecture' => '名古屋県',
             'password' => bcrypt('sample3'),
             'profile_image' => 'https://placehold.jp/50x50.png',
-            'introduction' => 'sample3です',
+            'introduction' => 'sample3ですsample3ですsample3ですsample3ですsample3ですsample3ですsample3ですsample3です',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
         ],
@@ -52,7 +52,7 @@ class UsersTableSeeder extends Seeder
             'prefecture' => '大阪府',
             'password' => bcrypt('sample4'),
             'profile_image' => 'https://placehold.jp/50x50.png',
-            'introduction' => 'sample4です',
+            'introduction' => 'sample4ですsample4ですsample4ですsample4ですsample4ですsample4ですsample4ですsample4です',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
         ],
@@ -63,7 +63,7 @@ class UsersTableSeeder extends Seeder
             'prefecture' => '福岡県',
             'password' => bcrypt('sample5'),
             'profile_image' => 'https://placehold.jp/50x50.png',
-            'introduction' => 'sample5です',
+            'introduction' => 'sample5ですsample5ですsample5ですsample5ですsample5ですsample5ですsample5ですsample5です',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
         ],

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Bulletin;
 
-class UserController extends Controller
+class BulletinController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $bulletins = Bulletin::orderBy('created_at','desc')->with(['user'])->get();
+        return view('bulletins.top', compact('bulletins'));
     }
 
     /**
@@ -45,11 +46,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        // ddd($user->profile_image);
-        $bulletins = Bulletin::where('user_id',$user->id)->orderBy('created_at','desc')->get();
-        return view('users.mypage', compact('user', 'bulletins'));
+        //
     }
 
     /**

@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+/* 背景 */
+body{
+    background-color: #E0F2F1;
+}
+
+/* ヘッダー */
+.drawer-brand{
+    color: #FF9800;
+}
+
+/* マイページ */
+.orange-color{
+    background-color: #f7b655;
+    /* #f7b655 */
+    /* #f5b24d */
+}
+
+/* 各ページの説明card */
+.description-card{
+    text-align: center;
+}
+
+.card-title-border{
+    padding-bottom: 3px;
+    display: inline-block;
+    border-bottom: solid 1.2px;
+}

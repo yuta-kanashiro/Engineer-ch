@@ -15,6 +15,8 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
         <!-- drawer.css -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
+        <!-- カスタマイズ -->
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <title>Engineer-ch</title>
     </head>
 

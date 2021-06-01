@@ -1,9 +1,9 @@
 <header class="mb-5">
-    <body class="drawer drawer--left drawer--navbarTopGutter winter-neva-gradient">
+    <body class="drawer drawer--left drawer--navbarTopGutter">
         <header class="drawer-navbar drawer-navbar--fixed" role="banner">
             <div class="drawer-container">
                 <div class="drawer-navbar-header">
-                    <a class="drawer-brand text-info" href="/">Engineer-ch</a>
+                    <a class="drawer-brand" href="/">Engineer-ch</a>
                     <button type="button" class="drawer-toggle drawer-hamburger">
                         <span class="sr-only">toggle navigation</span>
                         <span class="drawer-hamburger-icon"></span>
@@ -12,7 +12,7 @@
                 <nav class="drawer-nav ml-auto" role="navigation">
                     <ul class="drawer-menu">
                         @guest
-                        <li><a href="{{ route('login') }}" class="drawer-menu-item text-dark border-bottom">みんなの掲示板</a></li>
+                        <li><a href="/" class="drawer-menu-item text-dark border-bottom">みんなの掲示板</a></li>
                         <li><a href="{{ route('login') }}" class="drawer-menu-item text-dark border-bottom">ともだちの掲示板</a></li>
                         <li><a href="{{ route('login') }}" class="drawer-menu-item text-dark border-bottom">勉強メモ</a></li>
                         <li><a href="{{ route('login') }}" class="drawer-menu-item text-dark border-bottom">マイページ</a></li>
@@ -20,7 +20,7 @@
                         <li><a href="{{ route('login') }}" class="drawer-menu-item text-dark border-bottom">ログイン</a></li>
                         @endguest
                         @auth
-                        <li><a href="" class="drawer-menu-item text-dark border-bottom">みんなの掲示板</a></li>
+                        <li><a href="/" class="drawer-menu-item text-dark border-bottom">みんなの掲示板</a></li>
                         <li><a href="" class="drawer-menu-item text-dark border-bottom">ともだちの掲示板</a></li>
                         <li><a href="" class="drawer-menu-item text-dark border-bottom">勉強メモ</a></li>
                         <li><a href="{{ route('user.show', Auth::user()) }}" class="drawer-menu-item text-dark border-bottom">マイページ</a></li>

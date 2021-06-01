@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'BulletinController@index');
 
 Auth::routes();
+
+Route::resource('user', 'UserController', ['only' => ['show']]);

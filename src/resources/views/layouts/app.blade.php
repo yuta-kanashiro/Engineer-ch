@@ -13,6 +13,10 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
         <!-- Material Design Bootstrap -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+        <!-- drawer.css -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
+        <!-- カスタマイズ -->
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <title>Engineer-ch</title>
     </head>
 
@@ -20,32 +24,7 @@
         @include('commons.header')
 
         <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card btn-group-vertical py-3 pl-4">
-                        <h3 class="card-title border-bottom mb-3" style="padding:10px;">Menu</h3>
-                        @guest
-                            <a href="{{ route('login') }}" class="my-2 text-dark border-bottom">みんなの掲示板</a>
-                            <a href="{{ route('login') }}" class="my-2 text-dark border-bottom">自分たちだけの掲示板</a>
-                            <a href="{{ route('login') }}" class="my-2 text-dark border-bottom">勉強メモ</a>
-                        @endguest
-                        @auth
-                            <a href="" class="my-2 text-dark border-bottom">みんなの掲示板</a>
-                            <a href="" class="my-2 text-dark border-bottom">自分たちだけの掲示板</a>
-                            <a href="" class="my-2 text-dark border-bottom">勉強メモ</a>
-                            <a href="" class="my-2 text-dark border-bottom">マイページ</a>
-                            <form class="my-2 mt-5" action="{{ route('logout')}}" method="POST" name="logout">
-                                @csrf
-                                <button class="rounded bg-light" type="submit" href="javascript:logout.submit()">ログアウト</button>
-                            </form>
-                        @endauth
-                    </div>
-                </div>
-                <div class="col-md-1 border-left"></div>
-                <div class="col-md-8">
-                    @yield('content')
-                </div>
-            </div>
+            @yield('content')
         </div>
 
         <!-- JQuery -->
@@ -56,5 +35,15 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+        <!-- jquery & iScroll -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+        <!-- drawer.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.drawer').drawer();
+            });
+        </script>
     </body>
 </html>

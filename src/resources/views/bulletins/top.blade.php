@@ -17,7 +17,11 @@
                     @if ($bulletin->limited_id == 1)
                         <div class="card mb-3">
                             <div class="row mt-2 ml-2">
-                                <img class="profile-icon rounded-circle" src="{{ $bulletin->user->profile_image }}" alt="プロフィール画像" width="30" height="30">
+                                @if ($bulletin->user->profile_image == null)
+                                    <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
+                                @else
+                                    <img class="profile-icon rounded-circle" src="{{ Storage::url($bulletin->user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
+                                @endif
                                 <small class="mt-1 ml-2 text-muted"><a href="{{ route('user.show', $bulletin->user) }}" class="text-dark">{{ $bulletin->user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
                             </div>
                             <a href="" class="card-body">

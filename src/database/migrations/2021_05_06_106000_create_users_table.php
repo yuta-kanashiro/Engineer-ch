@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->integer('age')->comment('年齢');
             $table->string('prefecture')->index();
             $table->string('password');
-            $table->string('profile_image')->default('default.png')->comment('プロフィール画像');
+            $table->string('profile_image')->nullable()->comment('プロフィール画像');
             $table->string('introduction')->nullable()->comment('紹介文');
             $table->timestamps();
         });

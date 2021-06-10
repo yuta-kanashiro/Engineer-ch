@@ -6,8 +6,8 @@
         <div class="col-lg-9">
             <div class="card">
                 <div class="card justify-content-center">
-                    <div class="card-header">
-                        <h4 class="text-center mt-2">{{ __('新規登録') }}</h4>
+                    <div class="card-header sunny-morning-gradient">
+                        <h4 class="text-center text-white mt-2">{{ __('新規登録') }}</h4>
                     </div>
 
                     <div class="card-body">
@@ -89,18 +89,16 @@
                             </div>
 
                             <div class="form-group row pb-2">
-                                <label for="password" class="mt-2 col-md-4 text-md-right">{{ __('パスワード確認') }}<span class="text-danger">(※)</span></label>
+                                <label for="password" class="mt-2 col-md-4 text-md-right">{{ __('パスワードの確認') }}<span class="text-danger">(※)</span></label>
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="********">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="********">
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-md-5 offset-md-5">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('登録') }}
-                                    </button>
-                                </div>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn orange-color text-white rounded-pill">
+                                    {{ __('登録') }}
+                                </button>
                             </div>
                         </form>
                     </div>

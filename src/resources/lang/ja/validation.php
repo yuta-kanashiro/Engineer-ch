@@ -104,11 +104,15 @@ return [
     */
 
     'attributes' => [
+        'profile-image' => 'プロフィール画像',
         'name' => 'ニックネーム',
         'email' => 'メールアドレス',
         'age' => '年齢',
         'prefecture_id' => '都道府県',
         'password' => 'パスワード',
+        'introduction' => '自己紹介',
+        'current-password' => '現在のパスワード',
+        'new-password' => '新しいパスワード',
     ],
 
 ];

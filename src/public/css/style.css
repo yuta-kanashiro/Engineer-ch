@@ -5,16 +5,35 @@ body{
     background-color: #E0F2F1;
 }
 
-/* ヘッダー */
+/* ヘッダー・サイドバー*/
 .drawer-brand{
     color: #FF9800;
 }
 
-/* マイページ */
+.drawer-dropdown-menu{
+    border: none; /* 枠線を消す */
+}
+
+.clear-decoration{
+    border: none;  /* 枠線を消す */
+    outline: none; /* クリックしたときに表示される枠線を消す */
+    background: transparent; /* 背景の灰色を消す */
+}
+
+/* ユーザープロフィール */
 .orange-color{
     background-color: #f7b655;
     /* #f7b655 */
     /* #f5b24d */
+}
+
+/* プロフィール編集 */
+.profile-image:hover{
+    opacity: 0.7;
+}
+
+.icon-update{
+    display: none;
 }
 
 /* 各ページの説明card */

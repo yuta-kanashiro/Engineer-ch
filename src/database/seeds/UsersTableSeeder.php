@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
             'age' => '21',
             'prefecture' => '北海道',
             'password' => bcrypt('sample1'),
-            'profile_image' => 'https://placehold.jp/50x50.png',
+            'profile_image' => null,
             'introduction' => 'sample1ですsample1ですsample1ですsample1ですsample1ですsample1ですsample1ですsample1です',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
             'age' => '22',
             'prefecture' => '東京都',
             'password' => bcrypt('sample2'),
-            'profile_image' => 'https://placehold.jp/50x50.png',
+            'profile_image' => null,
             'introduction' => 'sample2ですsample2ですsample2ですsample2ですsample2ですsample2ですsample2ですsample2です',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
             'age' => '23',
             'prefecture' => '名古屋県',
             'password' => bcrypt('sample3'),
-            'profile_image' => 'https://placehold.jp/50x50.png',
+            'profile_image' => null,
             'introduction' => 'sample3ですsample3ですsample3ですsample3ですsample3ですsample3ですsample3ですsample3です',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
@@ -51,7 +51,7 @@ class UsersTableSeeder extends Seeder
             'age' => '24',
             'prefecture' => '大阪府',
             'password' => bcrypt('sample4'),
-            'profile_image' => 'https://placehold.jp/50x50.png',
+            'profile_image' => null,
             'introduction' => 'sample4ですsample4ですsample4ですsample4ですsample4ですsample4ですsample4ですsample4です',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
@@ -62,7 +62,7 @@ class UsersTableSeeder extends Seeder
             'age' => '25',
             'prefecture' => '福岡県',
             'password' => bcrypt('sample5'),
-            'profile_image' => 'https://placehold.jp/50x50.png',
+            'profile_image' => null,
             'introduction' => 'sample5ですsample5ですsample5ですsample5ですsample5ですsample5ですsample5ですsample5です',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'

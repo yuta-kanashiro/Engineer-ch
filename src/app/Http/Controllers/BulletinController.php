@@ -18,7 +18,7 @@ class BulletinController extends Controller
         // 掲示板を投稿日時が新しい順に取得、with()でN+1問題を解決
         $bulletins = Bulletin::orderBy('created_at','desc')->with(['user'])->get();
 
-        return view('bulletins.top', compact('bulletins'));
+        return view('bulletins-all.top', compact('bulletins'));
     }
 
     /**

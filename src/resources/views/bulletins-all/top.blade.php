@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'みんなの掲示板トップページ')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

@@ -18,7 +18,7 @@
 
                         <div class="form-group row justify-content-center pb-3">
                             <label for="profile-image" class="col-md-3 text-primary row">
-                                @if ($user->profile_image == null)
+                                @if ($user->profile_image === null)
                                     <img id="icon" class="profile-image rounded-circle mx-auto" src="{{ asset('default.png') }}" alt="プロフィール画像" width="150" height="150">
                                 @else
                                     <img id="icon" class="profile-image rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="150" height="150">

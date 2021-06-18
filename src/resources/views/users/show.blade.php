@@ -9,7 +9,7 @@
             <div class="card mb-5">
                 <div class="card-body row">
                     <div class="col-lg-3 text-center mb-5">
-                        @if ($user->profile_image == null)
+                        @if ($user->profile_image === null)
                             <img class="rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="150" height="150">
                         @else
                             <img class="rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="150" height="150">
@@ -19,7 +19,7 @@
                         <div class="d-flex">
                             <h5 class="my-3 text-dark font-weight-bold">{{ $user->name }}</h5>
                             @auth
-                                @if (Auth::id() == $user->id)
+                                @if (Auth::id() === $user->id)
                                     <a href="{{ route('user.edit', Auth::user()) }}" class="btn orange-color text-white ml-auto"> 編集</a>
                                 @else
                                     <button class="btn-sm orange-color text-white ml-auto"> フォロー</button>
@@ -45,22 +45,21 @@
             </div>
 
             <div class="collapse multi-collapse" id="collapse1">
-
-                {{-- 投稿した掲示板がある場合 --}}
+                <!-- 投稿した掲示板がある場合 -->
                 @if (!$bulletins->isEmpty())
                     <h4 class="text-center mb-4">{{ $user->name }}の投稿した掲示板</h4>
                         @foreach($bulletins as $bulletin )
-                            @if ($bulletin->limited_id == 1)
+                            @if ($bulletin->limited_id === 1)
                                 <div class="card mb-3">
                                     <div class="row mt-2 ml-2">
-                                        @if ($user->profile_image == null)
+                                        @if ($user->profile_image === null)
                                             <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
                                         @else
                                             <img class="profile-icon rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
                                         @endif
                                         <small class="mt-1 ml-2 text-muted"><a href="#" class="text-dark">{{ $user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
                                     </div>
-                                    <a href="" class="card-body">
+                                    <a href="{{ route('bulletin.show', $bulletin) }}" class="card-body">
                                         <div class="row">
                                             <h5 class="ml-2 text-dark font-weight-bold">{{ $bulletin->title }}</h5>
                                         </div>
@@ -79,14 +78,14 @@
             </div>
 
             <div class="collapse multi-collapse" id="collapse2">
-                {{-- いいねした掲示板がある場合 --}}
+                <!-- いいねした掲示板がある場合 -->
                 @if (!$bulletins->isEmpty())
                     <h4 class="text-center mb-4">{{ $user->name }}のいいねした掲示板</h4>
                         @foreach($bulletins as $bulletin )
-                            @if ($bulletin->limited_id == 2)
+                            @if ($bulletin->limited_id === 2)
                                 <div class="card mb-3">
                                     <div class="row mt-2 ml-2">
-                                        @if ($user->profile_image == null)
+                                        @if ($user->profile_image === null)
                                             <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
                                         @else
                                             <img class="profile-icon rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="30" height="30">

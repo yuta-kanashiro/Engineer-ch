@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Bulletin;
+use App\Models\Comment;
 
 class BulletinController extends Controller
 {
@@ -15,7 +16,7 @@ class BulletinController extends Controller
      */
     public function index()
     {
-        // 掲示板を投稿日時が新しい順に取得、with()でN+1問題を解決
+        // 掲示板を投稿日時が新しい順（降順）に取得、with()でN+1問題を解決
         $bulletins = Bulletin::orderBy('created_at','desc')->with(['user'])->get();
 
         return view('bulletins-all.top', compact('bulletins'));
@@ -48,9 +49,20 @@ class BulletinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Bulletin $bulletin)
     {
-        //
+        // コメントのbulletin_idと掲示板のidが一致するものを投稿日時が古い順（昇順）に取得
+        $comments = Comment::where('bulletin_id', $bulletin->id)->orderBy('created_at','asc')->with(['user'])->get();
+
+        if(!$comments->isEmpty()){
+            // 最終更新日表示用データ, sortByDesc('created_at')で投稿日時が新しい順（降順）に並べ直し、first()で一つ目（最新）のデータを取得
+            $updatedTime = $comments->sortByDesc('created_at')->first()->created_at->format('Y年m月d日');
+        }else{
+            // コメントがない場合、掲示板の投稿日を最終更新日とする
+            $updatedTime = $bulletin->created_at->format('Y年m月d日');
+        }
+
+        return view('bulletins-all.show', compact('bulletin', 'comments', 'updatedTime'));
     }
 
     /**

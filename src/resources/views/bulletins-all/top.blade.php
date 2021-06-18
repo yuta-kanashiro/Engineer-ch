@@ -15,23 +15,25 @@
 
             {{-- 投稿した掲示板がある場合 --}}
             @if (!$bulletins->isEmpty())
-                @foreach($bulletins as $bulletin )
-                    @if ($bulletin->limited_id == 1)
+                @foreach($bulletins as $bulletin)
+                    @if ($bulletin->limited_id === 1)
                         <div class="card mb-3">
                             <div class="row mt-2 ml-2">
-                                @if ($bulletin->user->profile_image == null)
-                                    <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
-                                @else
-                                    <img class="profile-icon rounded-circle" src="{{ Storage::url($bulletin->user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
-                                @endif
+                                <a href="{{ route('user.show', $bulletin->user) }}">
+                                    @if ($bulletin->user->profile_image === null)
+                                        <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
+                                    @else
+                                        <img class="profile-icon rounded-circle" src="{{ Storage::url($bulletin->user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
+                                    @endif
+                                </a>
                                 <small class="mt-1 ml-2 text-muted"><a href="{{ route('user.show', $bulletin->user) }}" class="text-dark">{{ $bulletin->user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
                             </div>
-                            <a href="" class="card-body">
+                            <a href="{{ route('bulletin.show', $bulletin) }}" class="card-body">
                                 <div class="row mb-3">
                                     <h5 class="ml-2 text-dark font-weight-bold">{{ $bulletin->title }}</h5>
                                 </div>
                                 <div class="row">
-                                    <small class="ml-2 text-muted">コメント数 2</small>
+                                    <small class="ml-2 text-muted">コメント数 {{ $bulletin->counts() }}</small>
                                 </div>
                             </a>
                         </div>

@@ -8,7 +8,7 @@
         <div class="col-lg-9">
             <div class="card mb-5">
                 <div class="card-body row">
-                    <div class="col-lg-3 text-center mb-5">
+                    <div class="col-lg-3 text-center mb-4">
                         @if ($user->profile_image === null)
                             <img class="rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="150" height="150">
                         @else
@@ -48,28 +48,28 @@
                 <!-- 投稿した掲示板がある場合 -->
                 @if (!$bulletins->isEmpty())
                     <h4 class="text-center mb-4">{{ $user->name }}の投稿した掲示板</h4>
-                        @foreach($bulletins as $bulletin )
-                            @if ($bulletin->limited_id === 1)
-                                <div class="card mb-3">
-                                    <div class="row mt-2 ml-2">
-                                        @if ($user->profile_image === null)
-                                            <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
-                                        @else
-                                            <img class="profile-icon rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
-                                        @endif
-                                        <small class="mt-1 ml-2 text-muted"><a href="#" class="text-dark">{{ $user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
-                                    </div>
-                                    <a href="{{ route('bulletin.show', $bulletin) }}" class="card-body">
-                                        <div class="row">
-                                            <h5 class="ml-2 text-dark font-weight-bold">{{ $bulletin->title }}</h5>
-                                        </div>
-                                        <div class="row">
-                                            <small class="ml-2 text-muted">コメント数 2</small>
-                                        </div>
-                                    </a>
+                    @foreach($bulletins as $bulletin )
+                        @if ($bulletin->limited_id === 1)
+                            <div class="card mb-3">
+                                <div class="row mt-2 ml-2">
+                                    @if ($user->profile_image === null)
+                                        <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
+                                    @else
+                                        <img class="profile-icon rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
+                                    @endif
+                                    <small class="mt-1 ml-2 text-muted"><a href="#" class="text-dark">{{ $user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
                                 </div>
-                            @endif
-                        @endforeach
+                                <a href="{{ route('bulletin.show', $bulletin) }}" class="card-body">
+                                    <div class="row">
+                                        <h5 class="ml-2 text-dark font-weight-bold">{{ $bulletin->title }}</h5>
+                                    </div>
+                                    <div class="row">
+                                        <small class="ml-2 text-muted">コメント数 {{ $bulletin->counts() }}</small>
+                                    </div>
+                                </a>
+                            </div>
+                        @endif
+                    @endforeach
                 @else
                     <div class="text-center my-4">
                         <p>投稿した掲示板がありません。</p>
@@ -81,28 +81,28 @@
                 <!-- いいねした掲示板がある場合 -->
                 @if (!$bulletins->isEmpty())
                     <h4 class="text-center mb-4">{{ $user->name }}のいいねした掲示板</h4>
-                        @foreach($bulletins as $bulletin )
-                            @if ($bulletin->limited_id === 2)
-                                <div class="card mb-3">
-                                    <div class="row mt-2 ml-2">
-                                        @if ($user->profile_image === null)
-                                            <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
-                                        @else
-                                            <img class="profile-icon rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
-                                        @endif
-                                        <small class="mt-1 ml-2 text-muted"><a href="{{ route('login') }}" class="text-dark">{{ $user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
-                                    </div>
-                                    <a href="" class="card-body">
-                                        <div class="row">
-                                            <h5 class="ml-2 text-dark font-weight-bold">{{ $bulletin->title }}</h5>
-                                        </div>
-                                        <div class="row">
-                                            <small class="ml-2 text-muted">コメント数 2</small>
-                                        </div>
-                                    </a>
+                    @foreach($bulletins as $bulletin )
+                        @if ($bulletin->limited_id === 2)
+                            <div class="card mb-3">
+                                <div class="row mt-2 ml-2">
+                                    @if ($user->profile_image === null)
+                                        <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
+                                    @else
+                                        <img class="profile-icon rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
+                                    @endif
+                                    <small class="mt-1 ml-2 text-muted"><a href="{{ route('login') }}" class="text-dark">{{ $user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
                                 </div>
-                            @endif
-                        @endforeach
+                                <a href="" class="card-body">
+                                    <div class="row">
+                                        <h5 class="ml-2 text-dark font-weight-bold">{{ $bulletin->title }}</h5>
+                                    </div>
+                                    <div class="row">
+                                        <small class="ml-2 text-muted">コメント数 {{ $bulletin->counts() }}</small>
+                                    </div>
+                                </a>
+                            </div>
+                        @endif
+                    @endforeach
                 @else
                     <div class="text-center my-4">
                         <p>いいねした掲示板がありません。</p>

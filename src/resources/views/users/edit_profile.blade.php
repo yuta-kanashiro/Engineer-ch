@@ -13,8 +13,8 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route( 'user.update', Auth::user() )}}" enctype="multipart/form-data">
-                        @method('PATCH')
                         @csrf
+                        @method('PATCH')
 
                         <div class="form-group row justify-content-center pb-3">
                             <label for="profile-image" class="col-md-3 text-primary row">

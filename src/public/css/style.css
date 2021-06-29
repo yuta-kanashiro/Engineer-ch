@@ -27,6 +27,10 @@ body{
     /* #f5b24d */
 }
 
+.follow-btn{
+    box-shadow: none;
+}
+
 /* プロフィール編集 */
 .profile-image:hover{
     opacity: 0.7;

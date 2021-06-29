@@ -17,12 +17,23 @@
                     </div>
                     <div class="col-lg-8 ml-2">
                         <div class="d-flex">
-                            <h5 class="my-3 text-dark font-weight-bold">{{ $user->name }}</h5>
+                            <h4 class="my-3 text-dark font-weight-bold">{{ $user->name }}</h4>
                             @auth
                                 @if (Auth::id() === $user->id)
-                                    <a href="{{ route('user.edit', Auth::user()) }}" class="btn orange-color text-white ml-auto"> 編集</a>
+                                    <a href="{{ route('user.edit', Auth::user()) }}" class="btn follow-btn orange-color rounded-pill text-white ml-auto">編集</a>
                                 @else
-                                    <button class="btn-sm orange-color text-white ml-auto"> フォロー</button>
+
+                                    @include('follow.follow_button')
+
+                                @endif
+                            @endauth
+                        </div>
+                        <div class="d-flex">
+                            @auth
+                                @if (Auth::id() != $user->id)
+                                    @if ($user->isFollowing(Auth::id()))
+                                        <small class="bg-light text-muted">フォローされています</small>
+                                    @endif
                                 @endif
                             @endauth
                         </div>
@@ -31,10 +42,10 @@
                             <p class="text-muted">在住：{{ $user->prefecture }}</p>
                         </div>
                         <p>{{ $user->introduction }}</p>
-                        <div class="d-flex flex-row">
-                            <p class="mr-1">2<p class="text-muted mr-2">フォロー</p></p>
-                            <p class="mr-1">2<p class="text-muted">フォロワー</p></p>
-                        </div>
+                        <a href="" class="d-flex flex-row text-dark">
+                            <p class="mr-1">{{ $user->countsFollowings() }}<p class="text-muted mr-2">フォロー</p></p>
+                            <p class="mr-1">{{ $user->countsFollowers() }}<p class="text-muted">フォロワー</p></p>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -13,8 +13,8 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('update_infomation', Auth::id()) }}">
-                        @method('PATCH')
                         @csrf
+                        @method('PATCH')
 
                         <div class="form-group row pb-2">
                             <label for="email" class="mt-2 col-md-4 text-md-right">{{ __('メールアドレス') }}<span class="text-danger">(※)</span></label>

@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'prefecture' => '北海道',
             'password' => bcrypt('sample1'),
             'profile_image' => null,
-            'introduction' => 'sample1ですsample1ですsample1ですsample1ですsample1ですsample1ですsample1ですsample1です',
+            'introduction' => 'みなさんこんにちは。僕の名前はsample1です。この文章は自己紹介のサンプルです。',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
         ],
@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
             'prefecture' => '東京都',
             'password' => bcrypt('sample2'),
             'profile_image' => null,
-            'introduction' => 'sample2ですsample2ですsample2ですsample2ですsample2ですsample2ですsample2ですsample2です',
+            'introduction' => 'みなさんこんにちは。僕の名前はsample2です。この文章は自己紹介のサンプルです。みなさんこんにちは。僕の名前はsample2です。この文章は自己紹介のサンプルです。',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
         ],
@@ -41,7 +41,7 @@ class UsersTableSeeder extends Seeder
             'prefecture' => '名古屋県',
             'password' => bcrypt('sample3'),
             'profile_image' => null,
-            'introduction' => 'sample3ですsample3ですsample3ですsample3ですsample3ですsample3ですsample3ですsample3です',
+            'introduction' => 'みなさんこんにちは。僕の名前はsample3です。この文章は自己紹介のサンプルです。',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
         ],
@@ -52,7 +52,7 @@ class UsersTableSeeder extends Seeder
             'prefecture' => '大阪府',
             'password' => bcrypt('sample4'),
             'profile_image' => null,
-            'introduction' => 'sample4ですsample4ですsample4ですsample4ですsample4ですsample4ですsample4ですsample4です',
+            'introduction' => 'みなさんこんにちは。僕の名前はsample4です。この文章は自己紹介のサンプルです。みなさんこんにちは。僕の名前はsample4です。この文章は自己紹介のサンプルです。',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
         ],
@@ -63,7 +63,7 @@ class UsersTableSeeder extends Seeder
             'prefecture' => '福岡県',
             'password' => bcrypt('sample5'),
             'profile_image' => null,
-            'introduction' => 'sample5ですsample5ですsample5ですsample5ですsample5ですsample5ですsample5ですsample5です',
+            'introduction' => 'みなさんこんにちは。僕の名前はsample5です。この文章は自己紹介のサンプルです。',
             'created_at' => '2021-03-01 07:25:42',
             'updated_at' => '2021-03-02 07:25:42'
         ],

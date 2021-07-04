@@ -50,13 +50,13 @@ class User extends Authenticatable
     // あるユーザーがフォローしているユーザーを取得
     public function followings()
     {
-        return $this->belongsToMany(User::class, 'follow_users', 'following_id', 'follower_id');
+        return $this->belongsToMany(User::class, 'follow_users', 'following_id', 'follower_id')->withTimestamps();
     }
 
     // あるユーザーをフォローしているユーザーを取得
     public function followers()
     {
-        return $this->belongsToMany(User::class, 'follow_users', 'follower_id', 'following_id');
+        return $this->belongsToMany(User::class, 'follow_users', 'follower_id', 'following_id')->withTimestamps();
     }
 
     // フォロー判定

@@ -9,7 +9,7 @@
         <div class="col-lg-9">
             <div class="card mb-4">
                 <div class="card-header bg-white">
-                    <h5 class="font-weight-bold mt-2">{{ $bulletin->title }}</h5>
+                    <h5 class="font-weight-bold mt-4">{{ $bulletin->title }}</h5>
                     <small class="float-right text-muted">最終更新日：{{ $updatedTime }}</small>
                 </div>
                 <div class="card-body border-bottom row justify-content-center">

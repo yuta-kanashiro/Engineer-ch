@@ -17,7 +17,8 @@ class CreateFollowUsersTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('following_id')->comment('自分がフォローしている人');
             $table->unsignedInteger('follower_id')->comment('自分をフォローしている人');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
 
             $table->foreign('following_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('follower_id')->references('id')->on('users')->onDelete('cascade');

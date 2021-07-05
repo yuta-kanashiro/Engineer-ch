@@ -20,7 +20,7 @@
                             <h4 class="my-3 text-dark font-weight-bold">{{ $user->name }}</h4>
                             @auth
                                 @if (Auth::id() === $user->id)
-                                    <a href="{{ route('user.edit', Auth::user()) }}" class="btn follow-btn orange-color rounded-pill text-white ml-auto">編集</a>
+                                    <a href="{{ route('user.edit', Auth::user()) }}" class="btn edit-btn orange-color rounded-pill text-white ml-auto">編集</a>
                                 @else
 
                                     @include('follow.follow_button')
@@ -42,10 +42,14 @@
                             <p class="text-muted">在住：{{ $user->prefecture }}</p>
                         </div>
                         <p>{{ $user->introduction }}</p>
-                        <a href="" class="d-flex flex-row text-dark">
-                            <p class="mr-1">{{ $user->countsFollowings() }}<p class="text-muted mr-2">フォロー</p></p>
-                            <p class="mr-1">{{ $user->countsFollowers() }}<p class="text-muted">フォロワー</p></p>
-                        </a>
+                        <div class="d-flex flex-row">
+                            <a href="{{ route('followings', $user->id) }}">
+                                <p class="text-dark">{{ $user->countsFollowings() }}<small class="text-muted mr-2 ml-1">フォロー中</small></p>
+                            </a>
+                            <a href="{{ route('followers', $user->id) }}">
+                                <p class="text-dark">{{ $user->countsFollowers() }}<small class="text-muted ml-1">フォロワー</small></p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,7 +65,7 @@
                     <h4 class="text-center mb-4">{{ $user->name }}の投稿した掲示板</h4>
                     @foreach($bulletins as $bulletin )
                         @if ($bulletin->limited_id === 1)
-                            <div class="card mb-3">
+                            <div class="card card-hover mb-3">
                                 <div class="row mt-2 ml-2">
                                     @if ($user->profile_image === null)
                                         <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">

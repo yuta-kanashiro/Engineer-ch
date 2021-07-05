@@ -78,42 +78,4 @@ class UserController extends Controller
 
         return redirect()->route('user.show', Auth::user());
     }
-
-    public function store($id)
-    {
-        // ログイン中のユーザー
-        $loginUser = Auth::user();
-        // フォロー対象のユーザーID
-        $followUserId = $id;
-
-        // すでにフォロー済みではないか？
-        $existing = $loginUser->isFollowing($followUserId);
-        // フォローする相手がユーザ自身ではないか？
-        $myself = $loginUser->id === $followUserId;
-
-        // フォロー済みではない、かつフォロー相手がユーザ自身ではない場合、フォロー
-        if (!$existing && !$myself) {
-            $loginUser->follow($followUserId);
-            return back();
-        }
-    }
-
-    public function destroy($id)
-    {
-        // ログイン中のユーザー
-        $loginUser = Auth::user();
-        // フォロー対象のユーザーID
-        $followUserId = $id;
-
-        // すでにフォロー済みではないか？
-        $existing = $loginUser->isFollowing($followUserId);
-        // フォローする相手がユーザ自身ではないか？
-        $myself = $loginUser->id === $followUserId;
-
-        // すでにフォロー済み、かつフォロー相手がユーザ自身ではない場合、フォローを外す
-        if ($existing && !$myself) {
-            $loginUser->unfollow($followUserId);
-            return back();
-        }
-    }
 }

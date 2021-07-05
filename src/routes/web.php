@@ -24,9 +24,9 @@ Route::group(['middleware' => 'auth'], function () {
         // 個人情報編集機能
         Route::patch('update_infomation', 'UserController@updateInfomation')->name('update_infomation');
         // フォロー機能
-        Route::post('follow', 'UserController@store')->name('follow');
+        Route::post('follow', 'UserFollowController@store')->name('follow');
         // アンフォロー機能
-        Route::delete('unfollow', 'UserController@destroy')->name('unfollow');
+        Route::delete('unfollow', 'UserFollowController@destroy')->name('unfollow');
     });
     // プロフィール編集画面表示（edit）、プロフィール編集機能（update）
     Route::resource('user', 'UserController', ['only' => ['edit', 'update']]);
@@ -42,9 +42,9 @@ Route::resource('user', 'UserController', ['only' => ['show']]);
 
 Route::group(['prefix' => '/user/{id}/'], function () {
     // フォロー一覧画面表示
-    Route::get('followings', 'UsersController@followings')->name('followings');
+    Route::get('followings', 'UserFollowController@followings')->name('followings');
     // フォロワー一覧画面表示
-    Route::get('followers', 'UsersController@followers')->name('followers');
+    Route::get('followers', 'UserFollowController@followers')->name('followers');
 });
 
 // 掲示板詳細画面表示

@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- コメント表示エリア -->
-<div class="chat-container">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-9">
             <div class="card mb-4">
@@ -35,28 +35,30 @@
     </div>
 </div>
 
-@guest
-    <div class="d-flex justify-content-center mb-3">
-        <a href="{{ route('login') }}" class="btn orange-color text-white rounded-pill">
-            コメントするにはログインしてください
-        </a>
-    </div>
-@endguest
-<!-- コメント入力エリア -->
-@auth
-    <form method="POST" action="{{ route('add', $bulletin->id) }}">
-        @csrf
+<div class="container">
+    @guest
+        <div class="d-flex justify-content-center mb-3">
+            <a href="{{ route('login') }}" class="btn orange-color text-white rounded-pill">
+                コメントするにはログインしてください
+            </a>
+        </div>
+    @endguest
+    <!-- コメント入力エリア -->
+    @auth
+        <form method="POST" action="{{ route('add', $bulletin->id) }}">
+            @csrf
 
-        <div class="comment-container">
-            <div class="row justify-content-center">
-                <div class="col-lg-9">
-                    <div class="input-group">
-                        <textarea class="form-control" id="comment" name="comment" placeholder="input massage" maxlength="200"></textarea>
-                        <button type="submit" class="btn btn-outline-orange">送信</button>
+            <div class="comment-container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <div class="input-group">
+                            <textarea class="form-control" id="comment" placeholder="コメントを追加" maxlength="200" required></textarea>
+                            <button type="submit" class="btn btn-outline-orange" id="send-btn" disabled>送信</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
-@endauth
+        </form>
+    @endauth
+</div>
 @endsection

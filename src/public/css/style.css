@@ -3,6 +3,7 @@
 /* 背景 */
 body{
     background-color: #E0F2F1;
+    width: 100%;
 }
 
 /* ホバーアクション */
@@ -20,18 +21,32 @@ body{
 }
 
 /* ヘッダー・サイドバー*/
-.drawer-brand{
-    color: #FF9800;
+.navbar{
+    width: 100%;
+    box-shadow: none;
+    position: fixed;
+    z-index: 11;
 }
 
-.drawer-dropdown-menu{
-    border: none; /* 枠線を消す */
+.navbar-brand{
+    color: #FF9800;
+    font-size: 25px;
+}
+
+.navbar-brand:hover{
+    color: #FF9800;
+    opacity: 0.6;
 }
 
 .clear-decoration{
-    border: none;  /* 枠線を消す */
+    border: none; /* 枠線を消す */
     outline: none; /* クリックしたときに表示される枠線を消す */
     background: transparent; /* 背景の灰色を消す */
+}
+
+/* コンテンツ切り替え部分 */
+.main-content{
+    margin-top: 100px;
 }
 
 /* ユーザープロフィール */
@@ -47,6 +62,10 @@ body{
 .edit-btn:hover{
     box-shadow: none;
     opacity: 0.7;
+}
+
+.like{
+    display: none;
 }
 
 /* フォローボタン関連 */

@@ -3,7 +3,7 @@
 @section('title', 'フォロー一覧')
 
 @section('content')
-<div class="chat-container">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-9">
             <div class="card mb-4">

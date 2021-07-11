@@ -16,7 +16,7 @@
                         @endif
                     </div>
                     <div class="col-lg-8 ml-2">
-                        <div class="d-flex">
+                        <div class="d-flex d-inline">
                             <h4 class="my-3 text-dark font-weight-bold">{{ $user->name }}</h4>
                             @auth
                                 @if (Auth::id() === $user->id)
@@ -43,23 +43,32 @@
                         </div>
                         <p>{{ $user->introduction }}</p>
                         <div class="d-flex flex-row">
-                            <a href="{{ route('followings', $user->id) }}">
-                                <p class="text-dark">{{ $user->countsFollowings() }}<small class="text-muted mr-2 ml-1">フォロー中</small></p>
-                            </a>
-                            <a href="{{ route('followers', $user->id) }}">
-                                <p class="text-dark">{{ $user->countsFollowers() }}<small class="text-muted ml-1">フォロワー</small></p>
-                            </a>
+                            @if($user->countsFollowings() === 0)
+                                <p class="text-muted">{{ $user->countsFollowings() }}<small class="text-muted mr-2 ml-1">フォロー中</small></p>
+                            @else
+                                <a href="{{ route('followings', $user->id) }}">
+                                    <p class="text-dark">{{ $user->countsFollowings() }}<small class="text-muted mr-2 ml-1">フォロー中</small></p>
+                                </a>
+                            @endif
+
+                            @if($user->countsFollowers() ===0)
+                                <p class="text-muted">{{ $user->countsFollowers() }}<small class="text-muted ml-1">フォロワー</small></p>
+                            @else
+                                <a href="{{ route('followers', $user->id) }}">
+                                    <p class="text-dark">{{ $user->countsFollowers() }}<small class="text-muted ml-1">フォロワー</small></p>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="btn-group d-flex justify-content-center mb-4" role="group">
-                <button class="btn orange-color text-white" aria-expanded="false" data-toggle="collapse" data-target="#collapse1" aria-controls="collapse1">掲示板を見る</button>
-                <button class="btn orange-color text-white" aria-expanded="false" data-toggle="collapse" data-target="#collapse2" aria-controls="collapse2">いいね！を見る</button>
+                <a class="btn btn-bulletin orange-color text-white">掲示板を見る</a>
+                <a class="btn btn-like orange-color text-white">いいね！を見る</a>
             </div>
 
-            <div class="collapse multi-collapse" id="collapse1">
+            <div class="bulletin">
                 <!-- 投稿した掲示板がある場合 -->
                 @if (!$bulletins->isEmpty())
                     <h4 class="text-center mb-4">{{ $user->name }}の投稿した掲示板</h4>
@@ -92,7 +101,7 @@
                 @endif
             </div>
 
-            <div class="collapse multi-collapse" id="collapse2">
+            <div class="like">
                 <!-- いいねした掲示板がある場合 -->
                 @if (!$bulletins->isEmpty())
                     <h4 class="text-center mb-4">{{ $user->name }}のいいねした掲示板</h4>

@@ -45,6 +45,7 @@ Route::group(['prefix' => '/user/{id}/'], function () {
     Route::get('followings', 'UserFollowController@followings')->name('followings');
     // フォロワー一覧画面表示
     Route::get('followers', 'UserFollowController@followers')->name('followers');
+    // Route::get('follow_list', 'UserFollowController@followList')->name('follow_list');
 });
 
 // 掲示板詳細画面表示

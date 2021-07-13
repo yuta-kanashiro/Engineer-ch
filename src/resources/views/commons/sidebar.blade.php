@@ -28,7 +28,7 @@
                         <li>
                             <form action="{{ route('logout')}}" method="POST" name="logout">
                                 @csrf
-                                <button class="text-white clear-decoration" href="javascript:logout.submit()"><small>ログアウト</small></button>
+                                <button class="logout-btn text-white" href="javascript:logout.submit()"><small>ログアウト</small></button>
                             </form>
                         </li>
                     </ul>

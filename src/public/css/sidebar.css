@@ -72,6 +72,12 @@
     display: none;
 }
 
+.logout-btn{
+    border: none; /* 枠線を消す */
+    outline: none; /* クリックしたときに表示される枠線を消す */
+    background: transparent; /* 背景の灰色を消す */
+}
+
 .spinner{
     transition: all 0.3s;
     box-sizing: border-box;

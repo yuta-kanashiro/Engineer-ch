@@ -8,13 +8,13 @@
     <div class="row justify-content-center">
         <div class="col-lg-9">
             <div class="card mb-4">
-                <div class="card-header bg-white">
-                    <h5 class="font-weight-bold mt-4">{{ $bulletin->title }}</h5>
-                    <small class="float-right text-muted">最終更新日：{{ $updatedTime }}</small>
+                <div class="card-header sunny-morning-gradient">
+                    <h5 class="font-weight-bold text-white text-center mt-4">{{ $bulletin->title }}</h5>
+                    <small class="float-right text-white">最終更新日：{{ $updatedTime }}</small>
                 </div>
                 <div class="card-body border-bottom row justify-content-center">
                     <div class="col-md-1 mb-2 mr-2">
-                        <a href="{{ route('user.show', $bulletin->user) }}">
+                        <a href="{{ route('user.show', $bulletin->user) }}" class="icon-hover">
                             @if ($bulletin->user->profile_image === null)
                                 <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="55" height="55">
                             @else
@@ -23,7 +23,7 @@
                         </a>
                     </div>
                     <div class="col-md-10">
-                        <a href="{{ route('user.show', $bulletin->user) }}" class="text-muted">{{ $bulletin->user->name }}</a>
+                        <a href="{{ route('user.show', $bulletin->user) }}" class="user-name-hover text-muted">{{ $bulletin->user->name }}</a>
                         <p>{{ $bulletin->summary }}</p>
                     </div>
                 </div>

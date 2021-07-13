@@ -16,7 +16,7 @@
                         @endif
                     </div>
                     <div class="col-lg-8 ml-2">
-                        <div class="d-flex d-inline">
+                        <div class="d-flex">
                             <h4 class="my-3 text-dark font-weight-bold">{{ $user->name }}</h4>
                             @auth
                                 @if (Auth::id() === $user->id)
@@ -47,6 +47,7 @@
                                 <p class="text-muted">{{ $user->countsFollowings() }}<small class="text-muted mr-2 ml-1">フォロー中</small></p>
                             @else
                                 <a href="{{ route('followings', $user->id) }}">
+                                <!-- <a href="{{ route('follow_list', $user->id) }}"> -->
                                     <p class="text-dark">{{ $user->countsFollowings() }}<small class="text-muted mr-2 ml-1">フォロー中</small></p>
                                 </a>
                             @endif
@@ -55,6 +56,7 @@
                                 <p class="text-muted">{{ $user->countsFollowers() }}<small class="text-muted ml-1">フォロワー</small></p>
                             @else
                                 <a href="{{ route('followers', $user->id) }}">
+                                <!-- <a href="{{ route('follow_list', $user->id) }}"> -->
                                     <p class="text-dark">{{ $user->countsFollowers() }}<small class="text-muted ml-1">フォロワー</small></p>
                                 </a>
                             @endif
@@ -64,7 +66,7 @@
             </div>
 
             <div class="btn-group d-flex justify-content-center mb-4" role="group">
-                <a class="btn btn-bulletin orange-color text-white">掲示板を見る</a>
+                <a class="btn btn-bulletin orange-color text-white border-right">掲示板を見る</a>
                 <a class="btn btn-like orange-color text-white">いいね！を見る</a>
             </div>
 
@@ -81,7 +83,7 @@
                                     @else
                                         <img class="profile-icon rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
                                     @endif
-                                    <small class="mt-1 ml-2 text-muted"><a href="#" class="text-dark">{{ $user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
+                                    <small class="mt-1 ml-2 text-muted"><span class="text-dark">{{ $user->name }}</span>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
                                 </div>
                                 <a href="{{ route('bulletin.show', $bulletin) }}" class="card-body">
                                     <div class="row">

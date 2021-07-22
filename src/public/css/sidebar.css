@@ -3,6 +3,7 @@
     position: fixed;
     left: 0;
     width: 230px;
+    max-width: 240px;
     margin-top: 60px;
     transition: transform 250ms ease-in-out; /* 動き（変化）のスピードを決める */
     background-color: #fff;
@@ -128,15 +129,4 @@
     box-sizing: border-box;
     transform: rotate(-135deg);
     margin-top: -9px;
-}
-
-@media screen and (max-width: 991px){
-    .test {display:none}
-    .sidebarIconToggle {display: block;}
-    #sidebarMenu {transform: translateX(-250px);}
-    .navbar-brand {margin:0 auto;}
-}
-
-@media screen and (min-width: 992px){
-    .navbar-brand {margin-left: 1px;}
 }

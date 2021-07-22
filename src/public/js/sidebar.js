@@ -1,21 +1,21 @@
-$(".sidebar-dropdown > a").click(function() {
-    $(".sidebar-submenu").slideUp(200);
+$('.sidebar-dropdown > a').click(function() {
+    $('.sidebar-submenu').slideUp(200);
     if (
       $(this)
         .parent()
-        .hasClass("active")
+        .hasClass('active')
     ) {
-      $(".sidebar-dropdown").removeClass("active");
+      $('.sidebar-dropdown').removeClass('active');
       $(this)
         .parent()
-        .removeClass("active");
+        .removeClass('active');
     } else {
-      $(".sidebar-dropdown").removeClass("active");
+      $('.sidebar-dropdown').removeClass('active');
       $(this)
-        .next(".sidebar-submenu")
+        .next('.sidebar-submenu')
         .slideDown(200);
       $(this)
         .parent()
-        .addClass("active");
+        .addClass('active');
     }
   });

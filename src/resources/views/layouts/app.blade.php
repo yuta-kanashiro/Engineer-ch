@@ -14,8 +14,10 @@
         <!-- Material Design Bootstrap -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
         <!-- カスタマイズ -->
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/follow_button.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <title>Engineer-ch</title>
     </head>
 
@@ -24,10 +26,10 @@
 
         <div>
             <div class="row">
-                <div class="sidebar col-lg-2">
+                <div class="sidebar">
                     @include('commons.sidebar')
                 </div>
-                <div class="main-content col-lg-10">
+                <div class="main-content">
                     @yield('content')
                 </div>
             </div>

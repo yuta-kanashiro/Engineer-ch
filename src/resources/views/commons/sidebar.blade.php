@@ -20,7 +20,14 @@
             <li><a href="" class="text-white">ともだちの掲示板</a></li>
             <li><a href="" class="text-white">勉強メモ</a></li>
             <li class="sidebar-dropdown">
-                <a href="#" class="dropdown-toggle text-white">{{ Auth::user()->name }}</a>
+                <a class="dropdown-toggle text-white">
+                    @if (Auth::user()->profile_image === null)
+                        <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="33" height="33">
+                    @else
+                        <img class="profile-icon rounded-circle" src="{{ Storage::url(Auth::user()->profile_image) }}" alt="プロフィール画像" width="33" height="33">
+                    @endif
+                    <span class="ml-1">{{ Auth::user()->name }}</span>
+                </a>
                 <div class="sidebar-submenu">
                     <ul>
                         <li><a class="sidebar-dropdown-item text-white" href="{{ route('user.show', Auth::user()) }}"><small>プロフィール</small></a></li>

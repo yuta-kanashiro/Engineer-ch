@@ -1,0 +1,38 @@
+/* フォローボタン関連 */
+.follow-btn{
+    box-shadow: none;
+    padding: 10px 19px;
+    background-color: #ffffff;
+    border: 1px solid #f7b655;
+    color: #f7b655;
+}
+
+.unfollow-btn{
+    box-shadow: none;
+    padding: 10px 25px;
+    background-color: #f7b655;
+    line-height: 1.5em;
+}
+
+.follow-btn:hover{
+    box-shadow: none;
+    color: #ffffff;
+    background-color: #ffcb7c;
+}
+
+.unfollow-btn:hover{
+    box-shadow: none;
+    background-color: #d32d03;
+}
+
+button .follow-hover{
+    display: none;
+}
+
+button:hover .follow-nomal{
+    display: none;
+}
+
+button:hover .follow-hover{
+    display: inline;
+}

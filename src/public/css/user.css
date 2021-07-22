@@ -1,0 +1,40 @@
+/* ユーザー関連 */
+/* プロフィール画面 */
+.edit-btn{
+    box-shadow: none;
+    padding-bottom: 3px;
+}
+
+.edit-btn:hover{
+    box-shadow: none;
+    opacity: 0.7;
+}
+
+.btn-bulletin, .btn-like{
+    box-shadow: none;
+}
+
+.btn-bulletin:hover, .btn-like:hover{
+    box-shadow: none;
+    background-color: #fdc879;
+}
+
+/* プロフィール編集画面 */
+.icon-update{
+    display: none;
+}
+
+/* フォロー一覧画面 */
+.btn-following, .btn-follower{
+    box-shadow: none;
+    font-size: 18px;
+}
+
+.unselect-btn{
+    color: #f7b655;
+}
+
+.btn-following:hover, .btn-follower:hover{
+    box-shadow: none;
+    background-color: #fdc879;
+}

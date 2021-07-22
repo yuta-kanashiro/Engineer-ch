@@ -1,12 +1,40 @@
 @charset "utf-8";
 
+/* 共通 */
 /* 背景 */
 body{
     background-color: #E0F2F1;
     width: 100%;
 }
 
-/* 共通 */
+.main-content{
+    margin: 100px 15px 15px 15px;
+}
+
+.card{
+    box-shadow: none;
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 1100px){
+    .test {display: none;}
+    .sidebarIconToggle {display: block;}
+    #sidebarMenu {transform: translateX(-250px);}
+    .navbar-brand {margin:0 auto;}
+    .main-content {width: 100%;}
+}
+
+@media screen and (min-width: 1101px){
+    .navbar-brand {margin-left: 1px;}
+    .main-content {
+        width: 82%;
+        margin: 100px 0 0 auto;
+    }
+    #sidebarMenu {width: 20%;}
+
+}
+
+
 /* ホバーアクション */
 .card-hover:hover{
     background-color: #d6d6d2dc;
@@ -48,85 +76,9 @@ body{
     opacity: 0.6;
 }
 
-/* コンテンツ切り替え部分 */
-.main-content{
-    margin-top: 100px;
-}
-
-.card{
-    box-shadow: none;
-}
-
-/* ユーザープロフィール */
+/* オレンジのボタン */
 .orange-color{
     background-color: #f7b655;
-}
-
-.edit-btn{
-    box-shadow: none;
-    padding-bottom: 3px;
-}
-
-.btn-bulletin, .btn-like{
-    box-shadow: none;
-}
-
-.like{
-    display: none;
-}
-
-.edit-btn:hover{
-    box-shadow: none;
-    opacity: 0.7;
-}
-
-.btn-bulletin:hover, .btn-like:hover{
-    box-shadow: none;
-    background-color: #fdc879;
-}
-
-/* フォローボタン関連 */
-.follow-btn{
-    box-shadow: none;
-    padding: 10px 19px;
-    background-color: #ffffff;
-    border: 1px solid #f7b655;
-    color: #f7b655;
-}
-
-.unfollow-btn{
-    box-shadow: none;
-    padding: 10px 25px;
-    background-color: #f7b655;
-    line-height: 1.5em;
-}
-
-.follow-btn:hover{
-    box-shadow: none;
-    color: #f7b655;
-    background-color: #f8f8f5;
-}
-
-.unfollow-btn:hover{
-    box-shadow: none;
-    background-color: #d32d03;
-}
-
-button .follow-hover{
-    display: none;
-}
-
-button:hover .follow-nomal{
-    display: none;
-}
-
-button:hover .follow-hover{
-    display: inline;
-}
-
-/* プロフィール編集 */
-.icon-update{
-    display: none;
 }
 
 /* 各ページの説明card */

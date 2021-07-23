@@ -13,9 +13,10 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
         <!-- Material Design Bootstrap -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-        <!-- drawer.css -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
         <!-- カスタマイズ -->
+        <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/follow_button.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <title>Engineer-ch</title>
     </head>
@@ -23,8 +24,15 @@
     <body>
         @include('commons.header')
 
-        <div class="container">
-            @yield('content')
+        <div>
+            <div class="row">
+                <div class="sidebar">
+                    @include('commons.sidebar')
+                </div>
+                <div class="main-content">
+                    @yield('content')
+                </div>
+            </div>
         </div>
 
         <!-- JQuery -->
@@ -35,15 +43,8 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-        <!-- jquery & iScroll -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
-        <!-- drawer.js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('.drawer').drawer();
-            });
-        </script>
+        <!-- カスタマイズ -->
+        <script src="{{ asset('js/sidebar.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>

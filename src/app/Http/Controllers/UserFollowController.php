@@ -50,19 +50,12 @@ class UserFollowController extends Controller
         }
     }
 
-    public function followings($id)
+    public function followList($id)
     {
         $user = User::find($id);
         $followingUsers = $user->followings()->withPivot('created_at AS joined_at')->orderBy('joined_at','desc')->get();
-
-        return view('follow.followings_list', compact('followingUsers', 'user'));
-    }
-
-    public function followers($id)
-    {
-        $user = User::find($id);
         $followerUsers = $user->followers()->withPivot('created_at AS joined_at')->orderBy('joined_at','desc')->get();
 
-        return view('follow.followers_list', compact('followerUsers', 'user'));
+        return view('follow.follow_list', compact('followingUsers', 'followerUsers', 'user'));
     }
 }

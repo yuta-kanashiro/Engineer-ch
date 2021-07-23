@@ -61,7 +61,7 @@
 
 
                         <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn orange-color text-white rounded-pill">
+                            <button type="submit" class="btn orange-color submit-btn text-white rounded-pill">
                                 {{ __('変更') }}
                             </button>
                         </div>

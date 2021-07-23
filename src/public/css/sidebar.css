@@ -1,0 +1,132 @@
+#sidebarMenu{
+    height: 100%;
+    position: fixed;
+    left: 0;
+    width: 230px;
+    max-width: 240px;
+    margin-top: 60px;
+    transition: transform 250ms ease-in-out; /* 動き（変化）のスピードを決める */
+    background-color: #fff;
+    z-index: 10;
+    opacity: 0.9;
+}
+
+.sidebarMenuInner{
+    margin:0;
+    padding:0;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.sidebarMenuInner li{
+    list-style: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.329);
+}
+
+.sidebarMenuInner li a, button{
+    display: block;
+    padding: 22px 0 22px 17px;
+}
+
+.sidebar-submenu{
+    display: none;
+}
+
+.sidebar-dropdown-item{
+    list-style: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.329);
+}
+
+.sidebarMenuInner .sidebar-dropdown li:hover{
+    background-color: rgb(255, 123, 0);
+    opacity: 0.6;
+}
+
+.sidebarMenuInner a:hover{
+    background-color: rgb(255, 123, 0);
+    opacity: 0.6;
+}
+
+.openSidebarMenu[type="checkbox"]:checked ~ #sidebarMenu{
+    transform: translateX(0);
+}
+
+.openSidebarMenu[type=checkbox]{
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+}
+
+.sidebarIconToggle{
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: fixed;
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    top: 22px;
+    left: 15px;
+    height: 22px;
+    width: 22px;
+    display: none;
+}
+
+.logout-btn{
+    border: none; /* 枠線を消す */
+    outline: none; /* クリックしたときに表示される枠線を消す */
+    background: transparent; /* 背景の灰色を消す */
+}
+
+.spinner{
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: rgb(56, 55, 55);
+}
+
+.horizontal{
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+
+.diagonal.part-1{
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+
+.diagonal.part-2{
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+
+.openSidebarMenu[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal{
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+
+.openSidebarMenu[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1{
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+
+.openSidebarMenu[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2{
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -9px;
+}

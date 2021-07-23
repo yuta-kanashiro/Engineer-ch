@@ -41,10 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
 Route::resource('user', 'UserController', ['only' => ['show']]);
 
 Route::group(['prefix' => '/user/{id}/'], function () {
-    // フォロー一覧画面表示
-    Route::get('followings', 'UserFollowController@followings')->name('followings');
-    // フォロワー一覧画面表示
-    Route::get('followers', 'UserFollowController@followers')->name('followers');
+    // // フォロー、フォロワー一覧画面表示
+    Route::get('follow_list', 'UserFollowController@followList')->name('follow_list');
 });
 
 // 掲示板詳細画面表示

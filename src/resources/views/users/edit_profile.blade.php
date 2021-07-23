@@ -16,12 +16,12 @@
                         @csrf
                         @method('PATCH')
 
-                        <div class="form-group row justify-content-center pb-3">
+                        <div class="form-group justify-content-center row pb-3">
                             <label for="profile-image" class="col-md-3 text-primary row">
                                 @if ($user->profile_image === null)
-                                    <img id="icon" class="profile-image rounded-circle mx-auto" src="{{ asset('default.png') }}" alt="プロフィール画像" width="150" height="150">
+                                    <img id="icon" class="profile-image icon-hover rounded-circle mx-auto" src="{{ asset('default.png') }}" alt="プロフィール画像" width="150" height="150">
                                 @else
-                                    <img id="icon" class="profile-image rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="150" height="150">
+                                    <img id="icon" class="profile-image icon-hover rounded-circle mx-auto" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="150" height="150">
                                 @endif
                                 <input id="profile-image" type="file" class="icon-update form-control @error('profile-image') is-invalid @enderror" name="profile_image" value="{{ old('profile_image', $user->profile_image)}}" accept="image/png, image/jpeg" onchange="previewImage(this);">
                             </label>
@@ -93,7 +93,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn orange-color text-white rounded-pill">
+                            <button type="submit" class="btn orange-color submit-btn text-white rounded-pill">
                                 {{ __('完了') }}
                             </button>
                         </div>

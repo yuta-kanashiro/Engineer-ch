@@ -8,11 +8,11 @@
         <div class="col-lg-9">
             <div class="card mb-5">
                 <div class="card-body row">
-                    <div class="col-lg-3 text-center mb-4">
+                    <div class="col-lg-3 text-center my-2">
                         @if ($user->profile_image === null)
-                            <img class="rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="150" height="150">
+                            <img class="rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="140" height="140">
                         @else
-                            <img class="rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="150" height="150">
+                            <img class="rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="140" height="140">
                         @endif
                     </div>
                     <div class="col-lg-8 ml-2">
@@ -43,23 +43,32 @@
                         </div>
                         <p>{{ $user->introduction }}</p>
                         <div class="d-flex flex-row">
-                            <a href="{{ route('followings', $user->id) }}">
-                                <p class="text-dark">{{ $user->countsFollowings() }}<small class="text-muted mr-2 ml-1">フォロー中</small></p>
-                            </a>
-                            <a href="{{ route('followers', $user->id) }}">
-                                <p class="text-dark">{{ $user->countsFollowers() }}<small class="text-muted ml-1">フォロワー</small></p>
-                            </a>
+                            @if($user->countsFollowings() === 0)
+                                <p class="text-muted">{{ $user->countsFollowings() }}<small class="text-muted mr-2 ml-1">フォロー中</small></p>
+                            @else
+                                <a href="{{ route('follow_list', $user->id) }}">
+                                    <p class="text-dark">{{ $user->countsFollowings() }}<small class="text-muted mr-2 ml-1">フォロー中</small></p>
+                                </a>
+                            @endif
+
+                            @if($user->countsFollowers() ===0)
+                                <p class="text-muted">{{ $user->countsFollowers() }}<small class="text-muted ml-1">フォロワー</small></p>
+                            @else
+                                <a href="{{ route('follow_list', $user->id) }}">
+                                    <p class="text-dark">{{ $user->countsFollowers() }}<small class="text-muted ml-1">フォロワー</small></p>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="btn-group d-flex justify-content-center mb-4" role="group">
-                <button class="btn orange-color text-white" aria-expanded="false" data-toggle="collapse" data-target="#collapse1" aria-controls="collapse1">掲示板を見る</button>
-                <button class="btn orange-color text-white" aria-expanded="false" data-toggle="collapse" data-target="#collapse2" aria-controls="collapse2">いいね！を見る</button>
+                <a class="btn btn-bulletin orange-color text-white border-right">掲示板を見る</a>
+                <a class="btn btn-like orange-color text-white">いいね！を見る</a>
             </div>
 
-            <div class="collapse multi-collapse" id="collapse1">
+            <div class="bulletin">
                 <!-- 投稿した掲示板がある場合 -->
                 @if (!$bulletins->isEmpty())
                     <h4 class="text-center mb-4">{{ $user->name }}の投稿した掲示板</h4>
@@ -72,7 +81,7 @@
                                     @else
                                         <img class="profile-icon rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
                                     @endif
-                                    <small class="mt-1 ml-2 text-muted"><a href="#" class="text-dark">{{ $user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
+                                    <small class="mt-1 ml-2 text-muted"><span class="text-dark">{{ $user->name }}</span>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
                                 </div>
                                 <a href="{{ route('bulletin.show', $bulletin) }}" class="card-body">
                                     <div class="row">
@@ -92,7 +101,7 @@
                 @endif
             </div>
 
-            <div class="collapse multi-collapse" id="collapse2">
+            <div class="like">
                 <!-- いいねした掲示板がある場合 -->
                 @if (!$bulletins->isEmpty())
                     <h4 class="text-center mb-4">{{ $user->name }}のいいねした掲示板</h4>

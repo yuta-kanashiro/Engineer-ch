@@ -8,7 +8,7 @@ body{
 }
 
 .main-content{
-    margin: 100px 15px 15px 15px;
+    margin: 110px 15px 15px 15px;
 }
 
 .card{
@@ -28,7 +28,7 @@ body{
     .navbar-brand {margin-left: 1px;}
     .main-content {
         width: 82%;
-        margin: 100px 0 0 auto;
+        margin: 110px 0 0 auto;
     }
     #sidebarMenu {width: 20%;}
 

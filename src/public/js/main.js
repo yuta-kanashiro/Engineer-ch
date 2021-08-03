@@ -1,8 +1,5 @@
 // ユーザー詳細画面
 $(function(){
-    // 非表示にする
-    $('.like').hide();
-
     $('.btn-bulletin').click(function() {
         // 表示する
         $('.bulletin').show();
@@ -67,5 +64,19 @@ $(function(){
         $('.btn-following').addClass('btn-outline-warning');
         $('.btn-follower').removeClass('btn-outline-warning');
         $('.btn-follower').addClass('orange-color');
+    });
+});
+
+// 掲示板投稿のチェックボタン
+$(function () {
+    $('input[id="limited_key"]').change(function () {
+        // チェックされたら、解除されたら
+        if($('input[id="limited_key"]').prop('checked')){
+            $('.full-release').hide();
+            $('.limited-release').show();
+        } else if ($('input[id="limited_key"]').prop('checked', false)) {
+            $('.limited-release').hide();
+            $('.full-release').show();
+        }
     });
 });

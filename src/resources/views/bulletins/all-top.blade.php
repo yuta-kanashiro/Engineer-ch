@@ -16,7 +16,7 @@
             {{-- 投稿した掲示板がある場合 --}}
             @if (!$bulletins->isEmpty())
                 @foreach($bulletins as $bulletin)
-                    @if ($bulletin->limited_id === 1)
+                    @if ($bulletin->limited_key === null)
                         <div class="card card-hover mb-3">
                             <div class="row mt-2 ml-2">
                                 <a href="{{ route('user.show', $bulletin->user) }}" class="icon-hover">
@@ -45,6 +45,10 @@
                 </div>
             @endif
         </div>
+
+        @auth
+            @include('bulletins.post_btn')
+        @endauth
     </div>
 </div>
 @endsection

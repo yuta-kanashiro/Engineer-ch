@@ -15,26 +15,6 @@ body{
     box-shadow: none;
 }
 
-/* レスポンシブ */
-@media screen and (max-width: 1100px){
-    .test {display: none;}
-    .sidebarIconToggle {display: block;}
-    #sidebarMenu {transform: translateX(-250px);}
-    .navbar-brand {margin:0 auto;}
-    .main-content {width: 100%;}
-}
-
-@media screen and (min-width: 1101px){
-    .navbar-brand {margin-left: 1px;}
-    .main-content {
-        width: 82%;
-        margin: 110px 0 0 auto;
-    }
-    #sidebarMenu {width: 20%;}
-
-}
-
-
 /* ホバーアクション */
 .card-hover:hover{
     background-color: #d6d6d2dc;
@@ -48,12 +28,12 @@ body{
     border-bottom: solid 1px;
 }
 
-/* submitボタン（新規登録、ログイン、編集） */
-.submit-btn{
+/* ボタン（影なし） */
+.btn-shadow{
     box-shadow: none;
 }
 
-.submit-btn:hover{
+.btn-shadow:hover{
     box-shadow: none;
     opacity: 0.7;
 }
@@ -90,4 +70,12 @@ body{
     padding-bottom: 3px;
     display: inline-block;
     border-bottom: solid 1.2px;
+}
+
+/* 投稿ボタン */
+.post-btn{
+    position: fixed;
+    background-color: #f7b655;
+    right: 35px;
+    bottom: 35px;
 }

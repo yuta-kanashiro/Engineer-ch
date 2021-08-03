@@ -98,7 +98,7 @@
                             </div>
 
                             <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn orange-color submit-btn text-white rounded-pill">
+                                <button type="submit" class="btn orange-color btn-shadow text-white rounded-pill">
                                     {{ __('登録') }}
                                 </button>
                             </div>

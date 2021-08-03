@@ -20,7 +20,7 @@
                             <h4 class="my-3 text-dark font-weight-bold">{{ $user->name }}</h4>
                             @auth
                                 @if (Auth::id() === $user->id)
-                                    <a href="{{ route('user.edit', Auth::user()) }}" class="btn edit-btn orange-color rounded-pill text-white ml-auto">編集</a>
+                                    <a href="{{ route('user.edit', Auth::user()) }}" class="btn btn-shadow orange-color rounded-pill text-white ml-auto">編集</a>
                                 @else
 
                                     @include('follow.follow_button')
@@ -73,7 +73,7 @@
                 @if (!$bulletins->isEmpty())
                     <h4 class="text-center mb-4">{{ $user->name }}の投稿した掲示板</h4>
                     @foreach($bulletins as $bulletin )
-                        @if ($bulletin->limited_id === 1)
+                        @if ($bulletin->limited_key === null)
                             <div class="card card-hover mb-3">
                                 <div class="row mt-2 ml-2">
                                     @if ($user->profile_image === null)
@@ -101,12 +101,12 @@
                 @endif
             </div>
 
-            <div class="like">
+            <div class="like" style="display:none;">
                 <!-- いいねした掲示板がある場合 -->
                 @if (!$bulletins->isEmpty())
                     <h4 class="text-center mb-4">{{ $user->name }}のいいねした掲示板</h4>
                     @foreach($bulletins as $bulletin )
-                        @if ($bulletin->limited_id === 2)
+                        @if ($bulletin->limited_key === '限定')
                             <div class="card mb-3">
                                 <div class="row mt-2 ml-2">
                                     @if ($user->profile_image === null)

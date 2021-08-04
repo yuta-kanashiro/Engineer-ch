@@ -11,10 +11,11 @@
                 <a class="btn btn-follower">フォロワー</a>
             </div>
 
+            {{-- フォロー中 --}}
             <div class="following">
                 <div class="card mb-4 mt-2">
-                    @if(!$followingUsers->isEmpty())
-                        @foreach($followingUsers as $followingUser)
+                    @if (!$followingUsers->isEmpty())
+                        @foreach( $followingUsers as $followingUser)
                             <div class="card-body card-hover border-bottom py-2">
                                 <div class="row">
                                     <div class="col-xl-1 col-1 mx-auto py-2">
@@ -42,7 +43,7 @@
                         @endforeach
                     @else
                         <div class="card-body">
-                            @if($user->id === Auth::id())
+                            @if ($user->id === Auth::id())
                                 <h5 class="text-center mt-1">まだ誰もフォローしていません</h5>
                             @else
                                 <h5 class="text-center mt-1">{{ $user->name }}さんはまだ誰もフォローしていません</h5>
@@ -52,10 +53,11 @@
                 </div>
             </div>
 
+            {{-- フォロワー --}}
             <div class="follower">
                 <div class="card mb-4">
-                    @if(!$followerUsers->isEmpty())
-                        @foreach($followerUsers as $followerUser)
+                    @if (!$followerUsers->isEmpty())
+                        @foreach ($followerUsers as $followerUser)
                             <div class="card-body card-hover border-bottom py-2">
                                 <div class="row">
                                     <div class="col-xl-1 col-1 mx-auto py-2">
@@ -83,7 +85,7 @@
                         @endforeach
                     @else
                         <div class="card-body">
-                            @if($user->id === Auth::id())
+                            @if ($user->id === Auth::id())
                                 <h5 class="text-center mt-1">まだフォロワーがいません</h5>
                             @else
                                 <h5 class="text-center mt-1">{{ $user->name }}さんにはまだフォロワーがいません</h5>

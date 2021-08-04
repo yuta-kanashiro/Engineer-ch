@@ -24,6 +24,34 @@ class BulletinController extends Controller
         return view('bulletins.all-top', compact('bulletins'));
     }
 
+    public function showLimited()
+    {
+        // ログインユーザーがフォローしているユーザーを取得
+        $followingUsers = Auth::user()->followings()->get();
+
+        foreach($followingUsers as $followingUser){
+            // フォローしているユーザーの掲示板を投稿日時が新しい順（降順）に取得、with()でN+1問題を解決
+            $bulletins = Bulletin::where('user_id', $followingUser->id)->orderBy('created_at','desc')->with(['user'])->get();
+
+            foreach($bulletins as $bulletin){
+                $bulletinsLimited[] = $bulletin;
+            }
+        }
+
+        // ログインユーザー自身の掲示板も取得
+        $bulletinsLoginUser = Bulletin::where('user_id', Auth::user()->id)->orderBy('created_at','desc')->with(['user'])->get();
+
+        foreach($bulletinsLoginUser as $bulletin){
+            $bulletinsLimited[] = $bulletin;
+        }
+
+        // $bulletinsLimited = sortByKey('created_at', SORT_DESC);
+        // $bulletinsLimited = sortByDesc('created_at','desc');
+        // ddd($bulletinsLimited);
+
+        return view('bulletins.limited-top', compact('bulletinsLimited'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

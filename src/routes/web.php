@@ -11,6 +11,7 @@
 |
 */
 
+// みんなの掲示板表示画面（トップページ）
 Route::get('/', 'BulletinController@index');
 
 Auth::routes();
@@ -32,6 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('user', 'UserController', ['only' => ['edit', 'update']]);
 
     # 掲示板関連
+    // ともだちの掲示板表示画面
+    Route::get('/limited-top', 'BulletinController@showLimited')->name('showLimited');
     // コメント機能
     Route::post('/bulletin/{id}/add', 'CommentController@add')->name('add');
     // 投稿画面表示（create）、投稿機能（store）
@@ -47,5 +50,5 @@ Route::group(['prefix' => '/user/{id}/'], function () {
     Route::get('follow_list', 'UserFollowController@followList')->name('follow_list');
 });
 
-// 掲示板詳細画面表示
+// みんなの掲示板詳細画面表示
 Route::resource('bulletin', 'BulletinController', ['only' => ['show']]);

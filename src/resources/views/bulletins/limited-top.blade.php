@@ -1,22 +1,22 @@
 @extends('layouts.app')
 
-@section('title', 'みんなの掲示板トップページ')
+@section('title', 'ともだちの掲示板トップページ')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-9">
             <div class="card description-card sunny-morning-gradient mb-5 text-white">
-                <div class="card-title"><h3 class="card-title-border mt-5">みんなの掲示板</h3></div>
+                <div class="card-title"><h3 class="card-title-border mt-5">ともだちの掲示板</h3></div>
                 <div class="card-body text-center">
-                    <p>気になる掲示板を覗いたり、興味のある内容の掲示板を作ったりしてみよう！</p>
+                    <p>フォロワーだけが見れる掲示板を覗いてみよう！</p>
                 </div>
             </div>
 
             {{-- 投稿した掲示板がある場合 --}}
-            @if (!$bulletins->isEmpty())
-                @foreach ($bulletins as $bulletin)
-                    @if ($bulletin->limited_key === null)
+            @if ($bulletinsLimited != "")
+                @foreach ($bulletinsLimited as $bulletin)
+                    @if ($bulletin->limited_key === '限定')
                         <div class="card card-hover mb-3">
                             <div class="row mt-2 ml-2">
                                 <a href="{{ route('user.show', $bulletin->user) }}" class="icon-hover">
@@ -37,7 +37,7 @@
                                 </div>
                             </a>
                         </div>
-                    @endif
+                        @endif
                 @endforeach
             @else
                 <div class="text-center my-4">

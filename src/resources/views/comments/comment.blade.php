@@ -1,5 +1,5 @@
 @if (!$comments->isEmpty())
-    @foreach($comments as $comment)
+    @foreach ($comments as $comment)
         <div class="row mb-2">
             <div class="col-md-10 mx-auto">
                 <div class="row">

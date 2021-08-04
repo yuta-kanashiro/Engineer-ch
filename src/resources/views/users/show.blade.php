@@ -72,7 +72,7 @@
                 <!-- 投稿した掲示板がある場合 -->
                 @if (!$bulletins->isEmpty())
                     <h4 class="text-center mb-4">{{ $user->name }}の投稿した掲示板</h4>
-                    @foreach($bulletins as $bulletin )
+                    @foreach ($bulletins as $bulletin )
                         @if ($bulletin->limited_key === null)
                             <div class="card card-hover mb-3">
                                 <div class="row mt-2 ml-2">
@@ -105,7 +105,7 @@
                 <!-- いいねした掲示板がある場合 -->
                 @if (!$bulletins->isEmpty())
                     <h4 class="text-center mb-4">{{ $user->name }}のいいねした掲示板</h4>
-                    @foreach($bulletins as $bulletin )
+                    @foreach ($bulletins as $bulletin )
                         @if ($bulletin->limited_key === '限定')
                             <div class="card mb-3">
                                 <div class="row mt-2 ml-2">

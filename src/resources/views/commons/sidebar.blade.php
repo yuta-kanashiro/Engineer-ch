@@ -17,7 +17,7 @@
         @endguest
         @auth
             <li><a href="/" class="text-white">みんなの掲示板</a></li>
-            <li><a href="" class="text-white">ともだちの掲示板</a></li>
+            <li><a href="{{ route('showLimited') }}" class="text-white">ともだちの掲示板</a></li>
             <li><a href="" class="text-white">勉強メモ</a></li>
             <li class="sidebar-dropdown">
                 <a class="dropdown-toggle text-white">

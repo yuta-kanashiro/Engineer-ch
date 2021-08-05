@@ -15,7 +15,7 @@
             <div class="following">
                 <div class="card mb-4 mt-2">
                     @if (!$followingUsers->isEmpty())
-                        @foreach( $followingUsers as $followingUser)
+                        @foreach ($followingUsers as $followingUser)
                             <div class="card-body card-hover border-bottom py-2">
                                 <div class="row">
                                     <div class="col-xl-1 col-1 mx-auto py-2">

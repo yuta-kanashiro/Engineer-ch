@@ -21,7 +21,7 @@ class BulletinController extends Controller
         // 掲示板を投稿日時が新しい順（降順）に取得、with()でN+1問題を解決
         $bulletins = Bulletin::orderBy('created_at','desc')->with(['user'])->get();
 
-        return view('bulletins.all-top', compact('bulletins'));
+        return view('bulletins.all_top', compact('bulletins'));
     }
 
     public function showLimited()
@@ -49,7 +49,7 @@ class BulletinController extends Controller
         // $bulletinsLimited = sortByDesc('created_at','desc');
         // ddd($bulletinsLimited);
 
-        return view('bulletins.limited-top', compact('bulletinsLimited'));
+        return view('bulletins.limited_top', compact('bulletinsLimited'));
     }
 
     /**

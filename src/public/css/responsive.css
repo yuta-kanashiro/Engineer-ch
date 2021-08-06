@@ -1,0 +1,31 @@
+/* レスポンシブ */
+@media screen and (max-width: 1100px){
+    .test {display: none;}
+    .sidebarIconToggle {display: block;}
+    #sidebarMenu {transform: translateX(-250px);}
+    .navbar-brand {margin:0 auto;}
+    .main-content {width: 100%;}
+    .post-btn{
+        padding: 20px 18px 20px 18px;
+        font-size: 15px;
+    }
+    .post-icon{
+        line-height: 20px;
+    }
+}
+
+@media screen and (min-width: 1101px){
+    .navbar-brand {margin-left: 1px;}
+    .main-content {
+        width: 82%;
+        margin: 110px 0 0 auto;
+    }
+    #sidebarMenu {width: 20%;}
+    .post-btn{
+        padding: 25px 25px 25px 25px;
+        font-size: 17px;
+    }
+    .post-icon{
+        line-height: 30px;
+    }
+}

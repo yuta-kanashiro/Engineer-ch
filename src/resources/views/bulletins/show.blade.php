@@ -52,7 +52,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
                         <div class="input-group">
-                            <textarea class="form-control" id="comment" placeholder="コメントを追加" maxlength="200" required></textarea>
+                            <textarea class="form-control" id="comment" name="comment" placeholder="コメントを追加" maxlength="200" required></textarea>
                             <button type="submit" class="btn btn-outline-orange" id="send-btn" disabled>送信</button>
                         </div>
                     </div>

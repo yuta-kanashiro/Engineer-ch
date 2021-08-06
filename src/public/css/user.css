@@ -1,15 +1,5 @@
 /* ユーザー関連 */
 /* プロフィール画面 */
-.edit-btn{
-    box-shadow: none;
-    padding-bottom: 3px;
-}
-
-.edit-btn:hover{
-    box-shadow: none;
-    opacity: 0.7;
-}
-
 .btn-bulletin, .btn-like{
     box-shadow: none;
 }

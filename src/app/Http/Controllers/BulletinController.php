@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateBulletinRequest;
 use App\Models\User;
 use App\Models\Bulletin;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Auth;
 
 class BulletinController extends Controller
 {
@@ -19,7 +21,35 @@ class BulletinController extends Controller
         // 掲示板を投稿日時が新しい順（降順）に取得、with()でN+1問題を解決
         $bulletins = Bulletin::orderBy('created_at','desc')->with(['user'])->get();
 
-        return view('bulletins-all.top', compact('bulletins'));
+        return view('bulletins.all_top', compact('bulletins'));
+    }
+
+    public function showLimited()
+    {
+        // ログインユーザーがフォローしているユーザーを取得
+        $followingUsers = Auth::user()->followings()->get();
+
+        foreach($followingUsers as $followingUser){
+            // フォローしているユーザーの掲示板を投稿日時が新しい順（降順）に取得、with()でN+1問題を解決
+            $bulletins = Bulletin::where('user_id', $followingUser->id)->orderBy('created_at','desc')->with(['user'])->get();
+
+            foreach($bulletins as $bulletin){
+                $bulletinsLimited[] = $bulletin;
+            }
+        }
+
+        // ログインユーザー自身の掲示板も取得
+        $bulletinsLoginUser = Bulletin::where('user_id', Auth::user()->id)->orderBy('created_at','desc')->with(['user'])->get();
+
+        foreach($bulletinsLoginUser as $bulletin){
+            $bulletinsLimited[] = $bulletin;
+        }
+
+        // $bulletinsLimited = sortByKey('created_at', SORT_DESC);
+        // $bulletinsLimited = sortByDesc('created_at','desc');
+        // ddd($bulletinsLimited);
+
+        return view('bulletins.limited_top', compact('bulletinsLimited'));
     }
 
     /**
@@ -29,7 +59,7 @@ class BulletinController extends Controller
      */
     public function create()
     {
-        //
+        return view('bulletins.create');
     }
 
     /**
@@ -38,9 +68,20 @@ class BulletinController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateBulletinRequest $request)
     {
-        //
+        //Postモデルのインスタンスを作成する
+        $bulletin = new Bulletin();
+        //ユーザーID
+        $bulletin->user_id = Auth::id();
+        // 限定公開に設定されている場合
+        if($request->limited_key === 'on'){
+            $bulletin->limited_key = '限定';
+        }
+        //リクエストデータを受け取り、データベースへ保存
+        $bulletin->fill($request->all())->save();
+
+        return redirect('/');
     }
 
     /**
@@ -62,7 +103,7 @@ class BulletinController extends Controller
             $updatedTime = $bulletin->created_at->format('Y年m月d日');
         }
 
-        return view('bulletins-all.show', compact('bulletin', 'comments', 'updatedTime'));
+        return view('bulletins.show', compact('bulletin', 'comments', 'updatedTime'));
     }
 
     /**

@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="{{ asset('css/user.css') }}">
         <link rel="stylesheet" href="{{ asset('css/follow_button.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
         <title>Engineer-ch</title>
     </head>
 

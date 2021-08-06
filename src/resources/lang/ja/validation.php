@@ -113,6 +113,8 @@ return [
         'introduction' => '自己紹介',
         'current-password' => '現在のパスワード',
         'new-password' => '新しいパスワード',
+        'title' => 'タイトル',
+        'summary' => '概要',
     ],
 
 ];

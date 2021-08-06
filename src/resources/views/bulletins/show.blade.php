@@ -9,7 +9,22 @@
         <div class="col-lg-9">
             <div class="card mb-4">
                 <div class="card-header sunny-morning-gradient">
-                    <h5 class="font-weight-bold text-white text-center mt-4">{{ $bulletin->title }}</h5>
+                    <!-- <div class="row">
+                        <h5 class="font-weight-bold text-white ml-3 mt-4">{{ $bulletin->title }}</h5>
+                        @auth
+                            @if (Auth::id() === $bulletin->user->id)
+                                <div class="dropdown ml-auto mr-3">
+                                    <a id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="text-white ml-auto">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li><a class="dropdown-item" href="#">編集する</a></li>
+                                        <li><a class="dropdown-item" href="#">削除する</a></li>
+                                    </ul>
+                                </div>
+                            @endif
+                        @endauth
+                    </div> -->
                     <small class="float-right text-white">最終更新日：{{ $updatedTime }}</small>
                 </div>
                 <div class="card-body border-bottom row justify-content-center">

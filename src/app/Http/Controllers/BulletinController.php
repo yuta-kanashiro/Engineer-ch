@@ -103,6 +103,18 @@ class BulletinController extends Controller
             $updatedTime = $bulletin->created_at->format('Y年m月d日');
         }
 
+        $user = Auth::user();
+        // その掲示板を投稿したユーザーはフォローしているユーザーか？
+        $followingUser = $user->followings()->where('follower_id', $bulletin->user_id)->exists();
+        // その掲示板を投稿したユーザーはログイン中のユーザーか？
+        $loginUser = $user->id === $bulletin->user_id;
+        // 限定掲示板のとき
+        if($bulletin->limited_key === '限定'){
+            if(!$followingUser and !$loginUser){
+                abort(403, $bulletin->user->name.'をフォローしているユーザーだけが閲覧可能です');
+            }
+        }
+
         return view('bulletins.show', compact('bulletin', 'comments', 'updatedTime'));
     }
 

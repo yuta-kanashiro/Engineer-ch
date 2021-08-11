@@ -72,10 +72,15 @@ body{
     border-bottom: solid 1.2px;
 }
 
-/* 投稿ボタン */
+/* 掲示板投稿ボタン */
 .post-btn{
     position: fixed;
     background-color: #f7b655;
     right: 35px;
     bottom: 35px;
+}
+
+.bulletin-menu{
+    opacity: 0.9;
+    border: none;
 }

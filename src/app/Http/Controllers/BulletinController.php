@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\CreateBulletinRequest;
+use App\Http\Requests\BulletinRequest;
 use App\Models\User;
 use App\Models\Bulletin;
 use App\Models\Comment;
@@ -68,7 +68,7 @@ class BulletinController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateBulletinRequest $request)
+    public function store(BulletinRequest $request)
     {
         //Postモデルのインスタンスを作成する
         $bulletin = new Bulletin();
@@ -78,6 +78,7 @@ class BulletinController extends Controller
         if($request->limited_key === 'on'){
             $bulletin->limited_key = '限定';
         }
+
         //リクエストデータを受け取り、データベースへ保存
         $bulletin->fill($request->all())->save();
 
@@ -103,6 +104,24 @@ class BulletinController extends Controller
             $updatedTime = $bulletin->created_at->format('Y年m月d日');
         }
 
+        // 限定掲示板のとき
+        if($bulletin->limited_key === '限定'){
+            // ログインユーザーではないとき
+            if(!Auth::check()){
+                abort(403, $bulletin->user->name.'をフォローしているユーザーだけが閲覧可能です');
+            }
+
+            $user = Auth::user();
+            // その掲示板を投稿したユーザーはフォローしているユーザーか？
+            $followingUser = $user->followings()->where('follower_id', $bulletin->user_id)->exists();
+            // その掲示板を投稿したユーザーはログイン中のユーザーか？
+            $loginUser = $user->id === $bulletin->user_id;
+
+            if(!$followingUser and !$loginUser){
+                abort(403, $bulletin->user->name.'をフォローしているユーザーだけが閲覧可能です');
+            }
+        }
+
         return view('bulletins.show', compact('bulletin', 'comments', 'updatedTime'));
     }
 
@@ -112,9 +131,12 @@ class BulletinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Bulletin $bulletin)
     {
-        //
+        // 認可機能（BulletinPolicy）
+        $this->authorize('edit', $bulletin);
+
+        return view('bulletins.edit', compact('bulletin'));
     }
 
     /**
@@ -124,9 +146,15 @@ class BulletinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BulletinRequest $request, $id)
     {
-        //
+        // findメゾットでレコードを取得して$articleに代入
+        $bulletin = Bulletin::find($id);
+        // リクエストデータを受け取り、データベースへ保存
+        $bulletin->fill($request->all())->save();
+
+        return redirect()->route('bulletin.show', $bulletin);
+
     }
 
     /**

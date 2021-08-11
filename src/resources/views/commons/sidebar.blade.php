@@ -9,24 +9,23 @@
 <div id="sidebarMenu" class="sunny-morning-gradient">
     <ul class="sidebarMenuInner">
         @guest
-            <li><a href="/" class="text-white">みんなの掲示板</a></li>
-            <li><a href="{{ route('login') }}" class="text-white">ともだちの掲示板</a></li>
-            <li><a href="{{ route('login') }}" class="text-white">勉強メモ</a></li>
-            <li><a href="{{ route('register') }}" class="text-white">新規登録</a></li>
-            <li><a href="{{ route('login') }}" class="text-white">ログイン</a></li>
+            <li><a href="/" class="text-white"><i class="far fa-clipboard fa-lg mr-3"></i>みんなの掲示板</a></li>
+            <li><a href="{{ route('login') }}" class="text-white"><i class="fas fa-clipboard fa-lg mr-3"></i>ともだちの掲示板</a></li>
+            <li><a href="{{ route('login') }}" class="text-white"><i class="fas fa-pen" style="padding-right:17px;"></i>勉強メモ</a></li>
+            <li><a href="{{ route('login') }}" class="text-white"><i class="far fa-user fa-lg" style="padding-right:14px;"></i>ログイン</a></li>
         @endguest
         @auth
-            <li><a href="/" class="text-white">みんなの掲示板</a></li>
-            <li><a href="{{ route('showLimited') }}" class="text-white">ともだちの掲示板</a></li>
-            <li><a href="" class="text-white">勉強メモ</a></li>
+            <li><a href="/" class="text-white"><i class="far fa-clipboard fa-lg mr-3"></i>みんなの掲示板</a></li>
+            <li><a href="{{ route('showLimited') }}" class="text-white"><i class="fas fa-clipboard fa-lg mr-3"></i>ともだちの掲示板</a></li>
+            <li><a href="" class="text-white"><i class="fas fa-pen" style="padding-right:17px;"></i>勉強メモ</a></li>
             <li class="sidebar-dropdown">
-                <a class="dropdown-toggle text-white">
+                <a class="dropdown-toggle text-white pl-2 ml-1">
                     @if (Auth::user()->profile_image === null)
-                        <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="33" height="33">
+                        <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="28" height="28">
                     @else
-                        <img class="profile-icon rounded-circle" src="{{ Storage::url(Auth::user()->profile_image) }}" alt="プロフィール画像" width="33" height="33">
+                        <img class="profile-icon rounded-circle" src="{{ Storage::url(Auth::user()->profile_image) }}" alt="プロフィール画像" width="28" height="28">
                     @endif
-                    <span class="ml-1">{{ Auth::user()->name }}</span>
+                    <span class="ml-2">{{ Auth::user()->name }}</span>
                 </a>
                 <div class="sidebar-submenu">
                     <ul>

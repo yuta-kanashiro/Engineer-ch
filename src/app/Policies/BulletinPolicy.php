@@ -3,10 +3,11 @@
 namespace App\Policies;
 
 use App\Models\User;
+use App\Models\Bulletin;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
-class UserPolicy
+class BulletinPolicy
 {
     use HandlesAuthorization;
 
@@ -20,10 +21,10 @@ class UserPolicy
         //
     }
 
-    //  プロフィール、個人情報編集における認可機能
-    public function edit(User $user, User $request_user)
+    //掲示板編集における認可機能
+    public function edit(User $user, Bulletin $request_bulletin)
     {
-        return $user->id === $request_user->id
+        return $user->id === $request_bulletin->user_id
                 ? Response::allow()
                 : Response::deny('このページを閲覧する権限はありません');
     }

@@ -79,3 +79,8 @@ body{
     right: 35px;
     bottom: 35px;
 }
+
+.bulletin-menu{
+    opacity: 0.9;
+    border: none;
+}

@@ -38,7 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
     // コメント機能
     Route::post('/bulletin/{id}/add', 'CommentController@add')->name('add');
     // 投稿画面表示（create）、投稿機能（store）
-    Route::resource('bulletin', 'BulletinController', ['only' => ['create', 'store']]);
+    Route::resource('bulletin', 'BulletinController', ['only' => ['create', 'store', 'edit', 'update']]);
 });
 
 # ゲスト状態で使用可能

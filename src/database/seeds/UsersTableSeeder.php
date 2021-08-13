@@ -21,7 +21,8 @@ class UsersTableSeeder extends Seeder
             'profile_image' => null,
             'introduction' => 'みなさんこんにちは。僕の名前はsample1です。この文章は自己紹介のサンプルです。',
             'created_at' => '2021-03-01 07:25:42',
-            'updated_at' => '2021-03-02 07:25:42'
+            'updated_at' => '2021-03-02 07:25:42',
+            'remember_token'    => Str::random(10)
         ],
         [
             'name' => 'sample2',
@@ -32,7 +33,8 @@ class UsersTableSeeder extends Seeder
             'profile_image' => null,
             'introduction' => 'みなさんこんにちは。僕の名前はsample2です。この文章は自己紹介のサンプルです。みなさんこんにちは。僕の名前はsample2です。この文章は自己紹介のサンプルです。',
             'created_at' => '2021-03-01 07:25:42',
-            'updated_at' => '2021-03-02 07:25:42'
+            'updated_at' => '2021-03-02 07:25:42',
+            'remember_token'    => Str::random(10)
         ],
         [
             'name' => 'sample3',
@@ -43,7 +45,8 @@ class UsersTableSeeder extends Seeder
             'profile_image' => null,
             'introduction' => 'みなさんこんにちは。僕の名前はsample3です。この文章は自己紹介のサンプルです。',
             'created_at' => '2021-03-01 07:25:42',
-            'updated_at' => '2021-03-02 07:25:42'
+            'updated_at' => '2021-03-02 07:25:42',
+            'remember_token'    => Str::random(10)
         ],
         [
             'name' => 'sample4',
@@ -54,7 +57,8 @@ class UsersTableSeeder extends Seeder
             'profile_image' => null,
             'introduction' => 'みなさんこんにちは。僕の名前はsample4です。この文章は自己紹介のサンプルです。みなさんこんにちは。僕の名前はsample4です。この文章は自己紹介のサンプルです。',
             'created_at' => '2021-03-01 07:25:42',
-            'updated_at' => '2021-03-02 07:25:42'
+            'updated_at' => '2021-03-02 07:25:42',
+            'remember_token'    => Str::random(10)
         ],
         [
             'name' => 'sample5',
@@ -65,7 +69,8 @@ class UsersTableSeeder extends Seeder
             'profile_image' => null,
             'introduction' => 'みなさんこんにちは。僕の名前はsample5です。この文章は自己紹介のサンプルです。',
             'created_at' => '2021-03-01 07:25:42',
-            'updated_at' => '2021-03-02 07:25:42'
+            'updated_at' => '2021-03-02 07:25:42',
+            'remember_token'    => Str::random(10)
         ],
         ]);
     }

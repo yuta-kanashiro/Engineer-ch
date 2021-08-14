@@ -26,12 +26,14 @@ class BulletinController extends Controller
 
     public function showLimited()
     {
+        $bulletinsLimited = [];
+
         // ログインユーザーがフォローしているユーザーを取得
         $followingUsers = Auth::user()->followings()->get();
 
         foreach($followingUsers as $followingUser){
-            // フォローしているユーザーの掲示板を投稿日時が新しい順（降順）に取得、with()でN+1問題を解決
-            $bulletins = Bulletin::where('user_id', $followingUser->id)->orderBy('created_at','desc')->with(['user'])->get();
+            // フォローしているユーザーの掲示板を取得、with()でN+1問題を解決
+            $bulletins = Bulletin::where('user_id', $followingUser->id)->with(['user'])->get();
 
             foreach($bulletins as $bulletin){
                 $bulletinsLimited[] = $bulletin;
@@ -39,15 +41,19 @@ class BulletinController extends Controller
         }
 
         // ログインユーザー自身の掲示板も取得
-        $bulletinsLoginUser = Bulletin::where('user_id', Auth::user()->id)->orderBy('created_at','desc')->with(['user'])->get();
+        $bulletinsLoginUser = Bulletin::where('user_id', Auth::user()->id)->with(['user'])->get();
 
         foreach($bulletinsLoginUser as $bulletin){
             $bulletinsLimited[] = $bulletin;
         }
 
-        // $bulletinsLimited = sortByKey('created_at', SORT_DESC);
-        // $bulletinsLimited = sortByDesc('created_at','desc');
-        // ddd($bulletinsLimited);
+        // ソート用の配列を作成
+        foreach ($bulletinsLimited as $bulletin){
+            $sort[] = $bulletin['created_at'];
+        }
+
+        // 投稿日時が新しい順（降順）にソート
+        array_multisort($sort, SORT_DESC, $bulletinsLimited);
 
         return view('bulletins.limited_top', compact('bulletinsLimited'));
     }

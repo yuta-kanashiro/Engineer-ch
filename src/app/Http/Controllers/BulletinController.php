@@ -110,21 +110,14 @@ class BulletinController extends Controller
             $updatedTime = $bulletin->created_at->format('Y年m月d日');
         }
 
-        // 限定掲示板のとき
+        // 限定掲示板のときの認可
         if($bulletin->limited_key === '限定'){
             // ログインユーザーではないとき
             if(!Auth::check()){
                 abort(403, $bulletin->user->name.'をフォローしているユーザーだけが閲覧可能です');
-            }
-
-            $user = Auth::user();
-            // その掲示板を投稿したユーザーはフォローしているユーザーか？
-            $followingUser = $user->followings()->where('follower_id', $bulletin->user_id)->exists();
-            // その掲示板を投稿したユーザーはログイン中のユーザーか？
-            $loginUser = $user->id === $bulletin->user_id;
-
-            if(!$followingUser and !$loginUser){
-                abort(403, $bulletin->user->name.'をフォローしているユーザーだけが閲覧可能です');
+            }else{
+                // 認可機能（BulletinPolicy）
+                $this->authorize('show', $bulletin);
             }
         }
 

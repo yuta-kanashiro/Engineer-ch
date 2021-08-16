@@ -84,3 +84,9 @@ body{
     opacity: 0.9;
     border: none;
 }
+
+/* 限定掲示板の鍵アイコン */
+.fa-lock{
+    color: rgb(90, 90, 90);
+    margin-right: 15px;
+}

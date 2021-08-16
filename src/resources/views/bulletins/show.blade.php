@@ -10,7 +10,12 @@
             <div class="card mb-4">
                 <div class="card-header sunny-morning-gradient">
                     <div class="row">
+                        @if ($bulletin->limited_key === '限定')
+                            <h5 class="font-weight-bold text-white ml-3 mt-4"><i class="fas fa-lock"></i>{{ $bulletin->title }}</h5>
+                        @else
                         <h5 class="font-weight-bold text-white ml-3 mt-4">{{ $bulletin->title }}</h5>
+                        @endif
+
                         @auth
                             @if (Auth::id() === $bulletin->user->id)
                                 <div class="dropdown ml-auto mr-3">

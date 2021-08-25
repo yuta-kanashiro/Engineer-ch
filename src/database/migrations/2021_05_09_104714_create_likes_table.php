@@ -21,6 +21,9 @@ class CreateLikesTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('bulletin_id')->references('id')->on('bulletins')->onDelete('cascade');
+
+            // 組み合わせのダブりを禁止
+            $table->unique(['user_id', 'bulletin_id']);
         });
     }
 

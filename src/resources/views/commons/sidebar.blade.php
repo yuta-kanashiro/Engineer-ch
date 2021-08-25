@@ -19,11 +19,11 @@
             <li><a href="{{ route('showLimited') }}" class="text-white"><i class="fas fa-clipboard fa-lg mr-3"></i>ともだちの掲示板</a></li>
             <li><a href="" class="text-white"><i class="fas fa-pen" style="padding-right:17px;"></i>勉強メモ</a></li>
             <li class="sidebar-dropdown">
-                <a class="dropdown-toggle text-white pl-2 ml-1">
+                <a class="dropdown-toggle text-white pl-2">
                     @if (Auth::user()->profile_image === null)
-                        <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="28" height="28">
+                        <img class="profile-icon rounded-circle ml-1" src="{{ asset('default.png') }}" alt="プロフィール画像" width="28" height="28">
                     @else
-                        <img class="profile-icon rounded-circle" src="{{ Storage::url(Auth::user()->profile_image) }}" alt="プロフィール画像" width="28" height="28">
+                        <img class="profile-icon rounded-circle ml-1" src="{{ Storage::url(Auth::user()->profile_image) }}" alt="プロフィール画像" width="28" height="28">
                     @endif
                     <span class="ml-2">{{ Auth::user()->name }}</span>
                 </a>

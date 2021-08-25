@@ -15,10 +15,12 @@ class UserController extends Controller
     # ユーザー詳細画面
     public function show(User $user)
     {
-        // ユーザーのIDと掲示板のuser_idが一致するものを投稿日時が新しい順に取得
+        // ユーザーのIDと掲示板のuser_idが一致するものを投稿日時が新しい順（降順）に取得
         $bulletins = Bulletin::where('user_id',$user->id)->orderBy('created_at','desc')->get();
+        // ユーザーのいいねを日時が新しい順（降順）に取得
+        $likes = $user->likes()->withPivot('created_at AS joined_at')->orderBy('joined_at','desc')->get();
 
-        return view('users.show', compact('user', 'bulletins'));
+        return view('users.show', compact('user', 'bulletins', 'likes'));
     }
 
     # プロフィール編集画面

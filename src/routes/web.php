@@ -33,10 +33,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('user', 'UserController', ['only' => ['edit', 'update']]);
 
     # 掲示板関連
+    Route::group(['prefix' => '/bulletin/{id}/'], function () {
+        // コメント機能
+        Route::post('add', 'CommentController@add')->name('add');
+        // いいね機能
+        Route::post('like', 'LikeController@store')->name('like');
+        // いいね削除機能
+        Route::delete('unlike', 'LikeController@destroy')->name('unlike');
+    });
     // ともだちの掲示板表示画面
     Route::get('/limited-top', 'BulletinController@showLimited')->name('showLimited');
-    // コメント機能
-    Route::post('/bulletin/{id}/add', 'CommentController@add')->name('add');
     // 投稿画面表示（create）、投稿機能（store）
     Route::resource('bulletin', 'BulletinController', ['only' => ['create', 'store', 'edit', 'update']]);
 });

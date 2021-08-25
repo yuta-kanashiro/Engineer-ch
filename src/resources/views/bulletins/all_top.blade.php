@@ -33,7 +33,7 @@
                                     <h5 class="ml-2 text-dark font-weight-bold">{{ $bulletin->title }}</h5>
                                 </div>
                                 <div class="row">
-                                    <small class="ml-2 text-muted">コメント数 {{ $bulletin->counts() }}</small>
+                                    <small class="ml-2 text-muted">コメント数 {{ $bulletin->countComments() }}</small>
                                 </div>
                             </a>
                         </div>

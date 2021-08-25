@@ -23,10 +23,21 @@ class Bulletin extends Model
         return $this->hasMany(Comment::class);
     }
 
+    // ある掲示板をいいねしているユーザーのIDを取得
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'likes', 'bulletin_id', 'user_id')->withTimestamps();
+    }
+
     // コメント数カウント
-    public function counts()
+    public function countComments()
     {
         return $this->comments()->count();
     }
 
+    // いいね数カウント
+    public function countLikes()
+    {
+        return $this->likes()->count();
+    }
 }

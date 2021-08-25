@@ -20,11 +20,12 @@
     font-size: 18px;
 }
 
-.unselect-btn{
-    color: #f7b655;
-}
-
 .btn-following:hover, .btn-follower:hover{
     box-shadow: none;
     background-color: #fdc879;
+}
+
+/* ユーザーの掲示板、いいね一覧 */
+.btn-bulletin, .btn-like{
+    font-size: 18px;
 }

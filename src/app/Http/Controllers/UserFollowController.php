@@ -19,17 +19,15 @@ class UserFollowController extends Controller
         // すでにフォロー済みではないか？
         $existing = $loginUser->isFollowing($followUserId);
         // フォローする相手がユーザ自身ではないか？
-        $myself = $loginUser->id == $followUserId;
-        // ddd($myself);
+        $myself = $loginUser->id === $followUserId;
 
         // フォロー済みではない、かつフォロー相手がユーザ自身ではない場合、フォロー
-        if (!$existing && !$myself) {
+        if (!$existing && !$myself){
             $loginUser->follow($followUserId);
             return back();
-        }else{
-            echo 'フォローできません';
         }
     }
+
     // フォローを外す
     public function destroy($id)
     {
@@ -44,7 +42,7 @@ class UserFollowController extends Controller
         $myself = $loginUser->id === $followUserId;
 
         // すでにフォロー済み、かつフォロー相手がユーザ自身ではない場合、フォローを外す
-        if ($existing && !$myself) {
+        if ($existing && !$myself){
             $loginUser->unfollow($followUserId);
             return back();
         }

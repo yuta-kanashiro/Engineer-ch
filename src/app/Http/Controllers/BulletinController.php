@@ -24,40 +24,6 @@ class BulletinController extends Controller
         return view('bulletins.all_top', compact('bulletins'));
     }
 
-    public function showLimited()
-    {
-        $bulletinsLimited = [];
-
-        // ログインユーザーがフォローしているユーザーを取得
-        $followingUsers = Auth::user()->followings()->get();
-
-        foreach($followingUsers as $followingUser){
-            // フォローしているユーザーの掲示板を取得、with()でN+1問題を解決
-            $bulletins = Bulletin::where('user_id', $followingUser->id)->with(['user'])->get();
-
-            foreach($bulletins as $bulletin){
-                $bulletinsLimited[] = $bulletin;
-            }
-        }
-
-        // ログインユーザー自身の掲示板も取得
-        $bulletinsLoginUser = Bulletin::where('user_id', Auth::user()->id)->with(['user'])->get();
-
-        foreach($bulletinsLoginUser as $bulletin){
-            $bulletinsLimited[] = $bulletin;
-        }
-
-        // ソート用の配列を作成
-        foreach ($bulletinsLimited as $bulletin){
-            $sort[] = $bulletin['created_at'];
-        }
-
-        // 投稿日時が新しい順（降順）にソート
-        array_multisort($sort, SORT_DESC, $bulletinsLimited);
-
-        return view('bulletins.limited_top', compact('bulletinsLimited'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -123,6 +89,16 @@ class BulletinController extends Controller
 
         return view('bulletins.show', compact('bulletin', 'comments', 'updatedTime'));
     }
+
+    public function showLimited()
+    {
+        $loginUser = Auth::user();
+        // フォローしているユーザーの掲示板とログインユーザー自身の掲示板を投稿日時が新しい順（降順）に取得
+        $bulletinsLimited = Bulletin::whereIn('user_id', $loginUser->followings()->pluck('follower_id'))->orWhere('user_id', $loginUser->id)->latest()->get();
+
+        return view('bulletins.limited_top', compact('bulletinsLimited'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.

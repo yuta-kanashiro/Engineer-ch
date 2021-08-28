@@ -29,11 +29,11 @@
                                 <small class="mt-1 ml-2 text-muted"><a href="{{ route('user.show', $bulletin->user) }}" class="user-name-hover text-dark">{{ $bulletin->user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
                             </div>
                             <a href="{{ route('bulletin.show', $bulletin) }}" class="card-body">
-                                <div class="row mb-3">
+                                <div class="row mb-2">
                                     <h5 class="ml-2 text-dark font-weight-bold">{{ $bulletin->title }}</h5>
                                 </div>
                                 <div class="row">
-                                    <small class="ml-2 text-muted">コメント数 {{ $bulletin->counts() }}</small>
+                                    <small class="ml-2 text-muted">コメント数 {{ $bulletin->countComments() }}</small>
                                 </div>
                             </a>
                         </div>

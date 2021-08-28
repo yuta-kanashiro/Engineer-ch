@@ -46,6 +46,14 @@
                         <a href="{{ route('user.show', $bulletin->user) }}" class="user-name-hover text-muted">{{ $bulletin->user->name }}</a>
                         <p>{{ $bulletin->summary }}</p>
                     </div>
+                    @auth
+                        <div class="col-12">
+                            <div class="row justify-content-center">
+                                @include('like.like_button')
+                                <small class="ml-2">{{ $bulletin->countLikes() }}いいね</small>
+                            </div>
+                        </div>
+                    @endauth
                 </div>
                 <div class="card-body">
                     @include('comments.comment')

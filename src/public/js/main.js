@@ -80,3 +80,36 @@ $(function () {
         }
     });
 });
+
+// ユーザー詳細画面の掲示板、いいね一覧
+$(function(){
+    // 非表示にする
+    $('.like').hide();
+    // ボタンのデザイン
+    $('.btn-bulletin').addClass('orange-color');
+    $('.btn-like').addClass('btn-outline-warning');
+
+    $('.btn-bulletin').click(function() {
+        // 表示する
+        $('.bulletin').show();
+        // 非表示にする
+        $('.like').hide();
+        // ボタンのデザイン
+        $('.btn-bulletin').removeClass('btn-outline-warning');
+        $('.btn-bulletin').addClass('orange-color');
+        $('.btn-like').removeClass('orange-color');
+        $('.btn-like').addClass('btn-outline-warning');
+    });
+
+    $('.btn-like').click(function() {
+        // 表示にする
+        $('.like').show();
+        // 非表示にする
+        $('.bulletin').hide();
+        // ボタンのデザイン
+        $('.btn-bulletin').removeClass('orange-color');
+        $('.btn-bulletin').addClass('btn-outline-warning');
+        $('.btn-like').removeClass('btn-outline-warning');
+        $('.btn-like').addClass('orange-color');
+    });
+});

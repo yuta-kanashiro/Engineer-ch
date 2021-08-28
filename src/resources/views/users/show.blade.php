@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-9">
-            <div class="card mb-5">
+            <div class="card mb-4">
                 <div class="card-body row">
                     <div class="col-lg-3 text-center my-2">
                         @if ($user->profile_image === null)
@@ -43,19 +43,19 @@
                         </div>
                         <p>{{ $user->introduction }}</p>
                         <div class="d-flex flex-row">
-                            @if($user->countsFollowings() === 0)
-                                <p class="text-muted">{{ $user->countsFollowings() }}<small class="text-muted mr-2 ml-1">フォロー中</small></p>
+                            @if($user->countFollowings() === 0)
+                                <p class="text-muted">{{ $user->countFollowings() }}<small class="text-muted mr-2 ml-1">フォロー中</small></p>
                             @else
                                 <a href="{{ route('follow_list', $user->id) }}">
-                                    <p class="text-dark">{{ $user->countsFollowings() }}<small class="text-muted mr-2 ml-1">フォロー中</small></p>
+                                    <p class="text-dark">{{ $user->countFollowings() }}<small class="text-muted mr-2 ml-1">フォロー中</small></p>
                                 </a>
                             @endif
 
-                            @if($user->countsFollowers() ===0)
-                                <p class="text-muted">{{ $user->countsFollowers() }}<small class="text-muted ml-1">フォロワー</small></p>
+                            @if($user->countFollowers() === 0)
+                                <p class="text-muted">{{ $user->countFollowers() }}<small class="text-muted ml-1">フォロワー</small></p>
                             @else
                                 <a href="{{ route('follow_list', $user->id) }}">
-                                    <p class="text-dark">{{ $user->countsFollowers() }}<small class="text-muted ml-1">フォロワー</small></p>
+                                    <p class="text-dark">{{ $user->countFollowers() }}<small class="text-muted ml-1">フォロワー</small></p>
                                 </a>
                             @endif
                         </div>
@@ -63,76 +63,69 @@
                 </div>
             </div>
 
-            <div class="btn-group d-flex justify-content-center mb-4" role="group">
-                <a class="btn btn-bulletin orange-color text-white border-right">掲示板を見る</a>
-                <a class="btn btn-like orange-color text-white">いいね！を見る</a>
-            </div>
+            @guest
+                <div class="d-flex justify-content-center">
+                    <a href="{{ route('login') }}" class="btn orange-color text-white rounded-pill">
+                        このユーザーの掲示板を見るにはログインしてください
+                    </a>
+                </div>
+            @endguest
+            @auth
 
-            <div class="bulletin">
-                <!-- 投稿した掲示板がある場合 -->
-                @if (!$bulletins->isEmpty())
-                    <h4 class="text-center mb-4">{{ $user->name }}の投稿した掲示板</h4>
-                    @foreach ($bulletins as $bulletin )
-                        @if ($bulletin->limited_key === null)
-                            <div class="card card-hover mb-3">
-                                <div class="row mt-2 ml-2">
-                                    @if ($user->profile_image === null)
-                                        <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
-                                    @else
-                                        <img class="profile-icon rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
-                                    @endif
-                                    <small class="mt-1 ml-2 text-muted"><span class="text-dark">{{ $user->name }}</span>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
-                                </div>
-                                <a href="{{ route('bulletin.show', $bulletin) }}" class="card-body">
-                                    <div class="row">
-                                        <h5 class="ml-2 text-dark font-weight-bold">{{ $bulletin->title }}</h5>
-                                    </div>
-                                    <div class="row">
-                                        <small class="ml-2 text-muted">コメント数 {{ $bulletin->counts() }}</small>
-                                    </div>
-                                </a>
-                            </div>
-                        @endif
-                    @endforeach
-                @else
-                    <div class="text-center my-4">
-                        <p>投稿した掲示板がありません。</p>
-                    </div>
-                @endif
-            </div>
+                <div class="btn-group d-flex justify-content-center mb-4" role="group">
+                    <a class="btn btn-bulletin">掲示板を見る</a>
+                    <a class="btn btn-like">いいねを見る</a>
+                </div>
 
-            <div class="like" style="display:none;">
-                <!-- いいねした掲示板がある場合 -->
-                @if (!$bulletins->isEmpty())
-                    <h4 class="text-center mb-4">{{ $user->name }}のいいねした掲示板</h4>
-                    @foreach ($bulletins as $bulletin )
-                        @if ($bulletin->limited_key === '限定')
-                            <div class="card mb-3">
-                                <div class="row mt-2 ml-2">
-                                    @if ($user->profile_image === null)
-                                        <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
-                                    @else
-                                        <img class="profile-icon rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
-                                    @endif
-                                    <small class="mt-1 ml-2 text-muted"><a href="{{ route('login') }}" class="text-dark">{{ $user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
-                                </div>
-                                <a href="" class="card-body">
-                                    <div class="row">
-                                        <h5 class="ml-2 text-dark font-weight-bold">{{ $bulletin->title }}</h5>
-                                    </div>
-                                    <div class="row">
-                                        <small class="ml-2 text-muted">コメント数 {{ $bulletin->counts() }}</small>
-                                    </div>
-                                </a>
-                            </div>
+                <div class="bulletin">
+                    <!-- 投稿した掲示板がある場合 -->
+                    @if (!$bulletins->isEmpty())
+                        <h4 class="text-center mb-4">{{ $user->name }}の投稿した掲示板</h4>
+                        <!-- ユーザーがログイン中のユーザー、もしくはログイン中のユーザーがフォローしているユーザーの場合 -->
+                        @if (Auth::user()->isFollowing($user->id) || $user == Auth::user())
+                            @foreach ($bulletins as $bulletin)
+
+                                @include('users.user_bulletins')
+
+                            @endforeach
+                        @else
+                            @foreach ($bulletins as $bulletin)
+                                @if ($bulletin->limited_key === null)
+
+                                    @include('users.user_bulletins')
+
+                                @endif
+                            @endforeach
                         @endif
-                    @endforeach
-                @else
-                    <div class="text-center my-4">
-                        <p>いいねした掲示板がありません。</p>
-                    </div>
-                @endif
-            </div>
+                    @else
+                        <div class="text-center my-4">
+                            <p>投稿した掲示板がありません。</p>
+                        </div>
+                    @endif
+                </div>
+
+                <div class="like" style="display:none;">
+                    <!-- いいねした掲示板がある場合 -->
+                    @if (!$likes->isEmpty())
+                        <h4 class="text-center mb-4">{{ $user->name }}のいいねした掲示板</h4>
+                        @foreach ($likes as $like)
+                            @if (Auth::user()->isFollowing($like->user->id) || $like->user == Auth::user())
+                                @include('users.user_likes')
+                            @else
+                                @if ($like->limited_key === null)
+
+                                    @include('users.user_likes')
+
+                                @endif
+                            @endif
+                        @endforeach
+                    @else
+                        <div class="text-center my-4">
+                            <p>いいねした掲示板がありません。</p>
+                        </div>
+                    @endif
+                </div>
+            @endauth
         </div>
     </div>
 </div>

@@ -47,13 +47,40 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    // あるユーザーがフォローしているユーザーを取得
+    # いいねに関する処理
+    // あるユーザーがいいねしている掲示板のIDを取得
+    public function likes()
+    {
+        return $this->belongsToMany(Bulletin::class, 'likes', 'user_id', 'bulletin_id')->withTimestamps();
+    }
+
+    // いいね判定
+    public function isLike($likeBulletinId)
+    {
+        //  いいね対象の掲示板ID（$likeBulletinId）が、すでにいいねしているbulletin_idと重複していないかどうかを判定
+        return $this->likes()->where('bulletin_id', $likeBulletinId)->exists();
+    }
+
+    // いいね処理
+    public function like($likeBulletinId)
+    {
+        $this->likes()->attach($likeBulletinId);
+    }
+
+    // いいねを外す処理
+    public function unlike($likeBulletinId)
+    {
+        $this->likes()->detach($likeBulletinId);
+    }
+
+    # フォローに関する処理
+    // あるユーザーがフォローしているユーザーのIDを取得
     public function followings()
     {
         return $this->belongsToMany(User::class, 'follow_users', 'following_id', 'follower_id')->withTimestamps();
     }
 
-    // あるユーザーをフォローしているユーザーを取得
+    // あるユーザーをフォローしているユーザーのIDを取得
     public function followers()
     {
         return $this->belongsToMany(User::class, 'follow_users', 'follower_id', 'following_id')->withTimestamps();
@@ -62,7 +89,7 @@ class User extends Authenticatable
     // フォロー判定
     public function isFollowing($followUserId)
     {
-        // フォロー対象のユーザID（$follow_user_id）が、すでにフォローしているfollower_idと重複していないかどうかを判定
+        // フォロー対象のユーザID（$followUserId）が、すでにフォローしているfollower_idと重複していないかどうかを判定
         return $this->followings()->where('follower_id', $followUserId)->exists();
     }
 
@@ -79,13 +106,13 @@ class User extends Authenticatable
     }
 
     // フォロー数カウント
-    public function countsFollowings()
+    public function countFollowings()
     {
         return $this->followings()->count();
     }
 
     // フォロワー数カウント
-    public function countsFollowers()
+    public function countFollowers()
     {
         return $this->followers()->count();
     }

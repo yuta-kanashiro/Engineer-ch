@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-9">
-            <div class="btn-group d-flex justify-content-center mb-2" id="btn-group" role="group">
+            <div class="btn-group d-flex justify-content-center mb-2" role="group">
                 <a class="btn btn-following">フォロー中</a>
                 <a class="btn btn-follower">フォロワー</a>
             </div>

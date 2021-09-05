@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name')->index()->comment('ニックネーム');
             $table->string('email')->unique();
             $table->integer('age')->comment('年齢');
-            $table->string('prefecture')->index();
+            $table->string('prefecture')->index()->comment('出身地');
             $table->string('password');
             $table->string('profile_image')->nullable()->comment('プロフィール画像');
             $table->string('introduction')->nullable()->comment('紹介文');

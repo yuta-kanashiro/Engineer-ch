@@ -7,9 +7,9 @@
     <div class="row justify-content-center">
         <div class="col-lg-9">
             <div class="card description-card sunny-morning-gradient mb-5 text-white">
-                <!-- <div class="card-title">
+                <div class="card-title">
                     <h3 class="card-title-border mt-5">みんなの掲示板</h3>
-                </div> -->
+                </div>
                 <div class="card-body text-center">
                     <p>気になる掲示板を覗いたり、興味のある内容の掲示板を作ったりしてみよう！</p>
                 </div>
@@ -32,12 +32,6 @@
                                     <small class="mt-1 ml-1 text-muted"><a href="{{ route('user.show', $bulletin->user) }}" class="user-name-hover text-dark">{{ $bulletin->user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
                                 </div>
                                 <a href="{{ route('bulletin.show', $bulletin) }}">
-                                    <!-- <div class="mb-2">
-                                        <h5 class="text-dark font-weight-bold">{{ $bulletin->title }}</h5>
-                                    </div>
-                                    <div class="">
-                                        <small class="text-muted">コメント数 {{ $bulletin->countComments() }}</small>
-                                    </div> -->
                                     <h5 class="text-dark font-weight-bold">{{ $bulletin->title }}</h5>
                                     <small class="text-muted">コメント数 {{ $bulletin->countComments() }}</small>
                                 </a>

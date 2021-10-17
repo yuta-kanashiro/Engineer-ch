@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserFollowController extends Controller
 {
-    // フォローする
+    # フォローする
     public function store($id)
     {
         // ログイン中のユーザー
@@ -28,7 +28,7 @@ class UserFollowController extends Controller
         }
     }
 
-    // フォローを外す
+    # フォローを外す
     public function destroy($id)
     {
         // ログイン中のユーザー

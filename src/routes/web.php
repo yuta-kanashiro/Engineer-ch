@@ -45,6 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/limited-top', 'BulletinController@showLimited')->name('showLimited');
     // 投稿画面表示（create）、投稿機能（store）
     Route::resource('bulletin', 'BulletinController', ['only' => ['create', 'store', 'edit', 'update']]);
+
+    # 検索機能
+    Route::get('search', 'SearchController@search')->name('search');
 });
 
 # ゲスト状態で使用可能

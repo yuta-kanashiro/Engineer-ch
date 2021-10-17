@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
+    # コメント機能
     public function add(Request $request, $id)
     {
         $bulletin = Bulletin::find($id);

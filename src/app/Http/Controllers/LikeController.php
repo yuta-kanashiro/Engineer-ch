@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
-    // いいねする
+    # いいねする
     public function store($id)
     {
         // ログイン中のユーザー
@@ -25,7 +25,7 @@ class LikeController extends Controller
         }
     }
 
-    // いいねを外す
+    # いいねを外す
     public function destroy($id)
     {
         // ログイン中のユーザー

@@ -77,7 +77,7 @@
     border: none;   /* 枠線を消す */
     outline: none;  /* クリックしたときに表示される枠線を消す */
     background: transparent;    /* 背景の灰色を消す */
-    padding-right: 99px;   /* クリック範囲拡大のため */
+    padding: 24px 99px 24px 17px;
 }
 
 .spinner{

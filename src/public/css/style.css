@@ -90,3 +90,14 @@ body{
     color: rgb(90, 90, 90);
     margin-right: 15px;
 }
+
+/* 検索フォーム */
+.search-form input[type="submit"]{
+    font-size: 1.3em;
+    outline: none;
+    border: none;
+    background: none;
+    position: absolute;
+    right: 15px;
+    top: 9px;
+}

@@ -15,7 +15,7 @@ class SearchController extends Controller
         // 入力されたキーワードを取得する
         $search = $request->input('search');
 
-        // キーワードが入力されていたら
+        // キーワードが入力された時
         if($search != null){
             // クエリビルダ
             $queryUser = User::query();
@@ -36,16 +36,14 @@ class SearchController extends Controller
             $users = $queryUser->orderBy('created_at', 'desc')->get();
             $bulletins = $queryBulletin->orderBy('created_at', 'desc')->with(['user'])->get();
 
-            return view('search.index', compact('users', 'bulletins'));
+            return view('search.top', compact('users', 'bulletins'));
 
         }else{
-
-            // 検索ワードを入力していない状態の時、何を表示させるか？
-
+            // キーワードが入力されていない時
             $users = User::orderBy('created_at', 'desc')->get();
             $bulletins = Bulletin::orderBy('created_at', 'desc')->get();
 
-            return view('search.index', compact('users', 'bulletins'));
+            return view('search.top', compact('users', 'bulletins'));
         }
     }
 }

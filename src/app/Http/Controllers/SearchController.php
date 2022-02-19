@@ -40,8 +40,13 @@ class SearchController extends Controller
 
         }else{
             // キーワードが入力されていない時
-            $users = User::orderBy('created_at', 'desc')->get();
-            $bulletins = Bulletin::orderBy('created_at', 'desc')->get();
+            // $users = User::orderBy('created_at', 'desc')->get();
+            // $bulletins = Bulletin::orderBy('created_at', 'desc')->get();
+
+            // return view('search.top', compact('users', 'bulletins'));
+
+            $users = '';
+            $bulletins = '';
 
             return view('search.top', compact('users', 'bulletins'));
         }

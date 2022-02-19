@@ -8,7 +8,7 @@
         <div class="col-lg-9">
             <div class="card description-card sunny-morning-gradient mb-5 text-white">
                 <div class="card-title">
-                    <h3 class="card-title-border mt-5">ユーザー・掲示板検索</h3>
+                    <h3 class="card-title-border mt-5">ユーザー・掲示板検索</h3>
                 </div>
                 <div class="card-body row d-flex justify-content-center">
                     {{-- 検索フォーム --}}
@@ -21,6 +21,7 @@
                 </div>
             </div>
 
+            @if ($users and $bulletins != '')
             <div class="card bg-white rounded border p-4">
                 {{-- ユーザー検索結果 --}}
                 <div class="border-bottom">
@@ -77,6 +78,7 @@
                     <h4 class="text-center mb-4">{{ request('search') }}の検索結果はありません</h4>
                 @endif
             </div>
+            @endif
         </div>
     </div>
 </div>

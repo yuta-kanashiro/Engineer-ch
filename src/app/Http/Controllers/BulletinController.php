@@ -140,6 +140,6 @@ class BulletinController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

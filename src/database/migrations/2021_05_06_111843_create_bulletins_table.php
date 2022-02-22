@@ -16,7 +16,7 @@ class CreateBulletinsTable extends Migration
         Schema::create('bulletins', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('title')->comment('タイトル')->index();
+            $table->string('title')->index()->comment('タイトル');
             $table->string('summary')->comment('概要');
             $table->string('limited_key')->nullable()->comment('限定公開キー');
             $table->timestamps();

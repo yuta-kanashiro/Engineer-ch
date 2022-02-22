@@ -30,7 +30,7 @@
                 <div class="sidebar">
                     @include('commons.sidebar')
                 </div>
-                <div class="main-content">
+                <div class="main-content mb-5">
                     @yield('content')
                 </div>
             </div>

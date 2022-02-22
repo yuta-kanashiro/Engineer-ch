@@ -19,7 +19,7 @@ class BulletinController extends Controller
     public function index()
     {
         // 掲示板を投稿日時が新しい順（降順）に取得、with()でN+1問題を解決
-        $bulletins = Bulletin::orderBy('created_at','desc')->with(['user'])->get();
+        $bulletins = Bulletin::orderBy('created_at', 'desc')->with(['user'])->get();
 
         return view('bulletins.all_top', compact('bulletins'));
     }
@@ -66,7 +66,7 @@ class BulletinController extends Controller
     public function show(Bulletin $bulletin)
     {
         // コメントのbulletin_idと掲示板のidが一致するものを投稿日時が古い順（昇順）に取得
-        $comments = Comment::where('bulletin_id', $bulletin->id)->orderBy('created_at','asc')->with(['user'])->get();
+        $comments = Comment::where('bulletin_id', $bulletin->id)->orderBy('created_at', 'asc')->with(['user'])->get();
 
         if(!$comments->isEmpty()){
             // 最終更新日表示用データ, sortByDesc('created_at')で投稿日時が新しい順（降順）に並べ直し、first()で一つ目（最新）のデータを取得

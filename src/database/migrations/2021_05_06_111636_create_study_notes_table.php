@@ -16,9 +16,9 @@ class CreateStudyNotesTable extends Migration
         Schema::create('study_notes', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('title')->comment('タイトル')->index();
+            $table->string('title')->index()->comment('タイトル');
             $table->time('time')->comment('勉強時間');
-            $table->string('summary')->comment('内容')->index();
+            $table->string('summary')->index()->comment('内容');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

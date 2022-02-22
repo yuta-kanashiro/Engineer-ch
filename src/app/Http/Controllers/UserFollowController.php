@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserFollowController extends Controller
 {
-    // フォローする
+    # フォローする
     public function store($id)
     {
         // ログイン中のユーザー
@@ -28,7 +28,7 @@ class UserFollowController extends Controller
         }
     }
 
-    // フォローを外す
+    # フォローを外す
     public function destroy($id)
     {
         // ログイン中のユーザー
@@ -51,8 +51,8 @@ class UserFollowController extends Controller
     public function followList($id)
     {
         $user = User::find($id);
-        $followingUsers = $user->followings()->withPivot('created_at AS joined_at')->orderBy('joined_at','desc')->get();
-        $followerUsers = $user->followers()->withPivot('created_at AS joined_at')->orderBy('joined_at','desc')->get();
+        $followingUsers = $user->followings()->withPivot('created_at AS joined_at')->orderBy('joined_at', 'desc')->get();
+        $followerUsers = $user->followers()->withPivot('created_at AS joined_at')->orderBy('joined_at', 'desc')->get();
 
         return view('follow.follow_list', compact('followingUsers', 'followerUsers', 'user'));
     }

@@ -19,7 +19,7 @@ class BulletinController extends Controller
     public function index()
     {
         // 掲示板を投稿日時が新しい順（降順）に取得、with()でN+1問題を解決
-        $bulletins = Bulletin::orderBy('created_at', 'desc')->with(['user'])->get();
+        $bulletins = Bulletin::orderBy('created_at', 'desc')->with(['user'])->paginate(10);
 
         return view('bulletins.all_top', compact('bulletins'));
     }
@@ -94,7 +94,7 @@ class BulletinController extends Controller
     {
         $loginUser = Auth::user();
         // フォローしているユーザーの掲示板とログインユーザー自身の掲示板を投稿日時が新しい順（降順）に取得
-        $bulletinsLimited = Bulletin::whereIn('user_id', $loginUser->followings()->pluck('follower_id'))->orWhere('user_id', $loginUser->id)->latest()->get();
+        $bulletinsLimited = Bulletin::whereIn('user_id', $loginUser->followings()->pluck('follower_id'))->orWhere('user_id', $loginUser->id)->latest()->paginate(10);
 
         return view('bulletins.limited_top', compact('bulletinsLimited'));
     }

@@ -88,7 +88,7 @@
                                 </a>
                             </div>
                         @endforeach
-                        <div class="bulletin mx-auto pt-2" >
+                        <div class="bulletin mx-auto pt-3">
                             {{$bulletins->appends(request()->query())->links()}}
                         </div>
                     @else

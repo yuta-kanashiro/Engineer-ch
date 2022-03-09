@@ -11,15 +11,16 @@
                     <h3 class="card-title-border mt-5">ともだちの掲示板</h3>
                 </div>
                 <div class="card-body text-center">
-                    <p>ともだちの掲示板を覗いてみよう！ともだち専用の限定掲示板もあるよ！</p>
+                    <p>フォロー中の掲示板が投稿順に表示されます</p>
                 </div>
             </div>
 
             {{-- 投稿した掲示板がある場合 --}}
             @if (!$bulletinsLimited->isEmpty())
-                <div class="card border">
+                <!-- <div class="card border"> -->
                     @foreach ($bulletinsLimited as $bulletin)
-                        <div class="card-body card-hover border-bottom">
+                    <div class="card border mb-3">
+                        <div class="card-body card-hover">
                             <div class="mb-3">
                                 <a href="{{ route('user.show', $bulletin->user) }}" class="icon-hover">
                                     @if ($bulletin->user->profile_image === null)
@@ -39,8 +40,13 @@
                                 <small class="text-muted">コメント数 {{ $bulletin->countComments() }}</small>
                             </a>
                         </div>
+                    </div>
                     @endforeach
-                </div>
+
+                    <div class="d-flex justify-content-center">
+                        {{ $bulletinsLimited->links() }}
+                    </div>
+                <!-- </div> -->
             @else
                 <h4 class="text-center">投稿された掲示板がありません</h4>
             @endif

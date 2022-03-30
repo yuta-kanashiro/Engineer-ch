@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('unlike', 'LikeController@destroy')->name('unlike');
     });
     // ともだちの掲示板表示画面
-    Route::get('/limited-top', 'BulletinController@showLimited')->name('showLimited');
+    Route::get('/timeline', 'BulletinController@showTimeline')->name('showTimeline');
     // 投稿画面表示（create）、投稿機能（store）
     Route::resource('bulletin', 'BulletinController', ['only' => ['create', 'store', 'edit', 'update']]);
 

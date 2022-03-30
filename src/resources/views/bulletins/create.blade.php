@@ -39,19 +39,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="limited_key" class="col-md-3 text-md-center">公開範囲</label>
-                            <div class="col-md-7">
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="limited_key" name="limited_key">
-                                    <label class="custom-control-label" for="limited_key">
-                                        <small class="full-release ml-2">公開：全てのユーザーが閲覧できます</small>
-                                        <small class="limited-release ml-2" style="display:none;">限定公開：フォロワーだけが閲覧できます</small>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn orange-color btn-shadow text-white rounded-pill">
                                 投稿

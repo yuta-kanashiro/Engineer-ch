@@ -1,0 +1,52 @@
+/*タブのスタイル*/
+.tab_item {
+    width: 50%;
+    border-bottom: 3px solid #f7b655;
+    background-color: #d9d9d9;
+    line-height: 50px;
+    text-align: center;
+    color: #565656;
+    float: left;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+.tab_item:hover {
+    opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
+    display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+    display: none;
+    clear: both;
+    overflow: hidden;
+}
+
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked + .tab_item {
+    background-color: #f7b655;
+    color: #fff;
+}
+
+/*選択されているタブのコンテンツのみを表示*/
+/* 検索画面 */
+#bulletin:checked ~ #bulletin_content,
+#user:checked ~ #user_content {
+    display: block;
+}
+
+/* ユーザー詳細画面 */
+#bulletin:checked ~ #bulletin_content,
+#like:checked ~ #like_content {
+    display: block;
+}
+
+/* フォローリスト画面 */
+#following:checked ~ #following_content,
+#follower:checked ~ #follower_content {
+    display: block;
+}

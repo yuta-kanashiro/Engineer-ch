@@ -10,7 +10,6 @@ class Bulletin extends Model
         'user_id',
         'title',
         'summary',
-        'limited_id',
     ];
 
     public function user()

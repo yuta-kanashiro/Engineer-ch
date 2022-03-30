@@ -9,15 +9,15 @@
 <div id="sidebarMenu" class="sunny-morning-gradient">
     <ul class="sidebarMenuInner">
         @guest
-            <li><a href="/" class="text-white"><i class="far fa-clipboard fa-lg mr-3"></i>みんなの掲示板</a></li>
-            <li><a href="{{ route('login') }}" class="text-white"><i class="fas fa-clipboard fa-lg mr-3"></i>ともだちの掲示板</a></li>
+            <li><a href="/" class="text-white"><i class="far fa-clipboard fa-lg mr-3"></i>掲示板一覧</a></li>
+            <li><a href="{{ route('login') }}" class="text-white"><i class="fas fa-clipboard fa-lg mr-3"></i>タイムライン</a></li>
             <li><a href="{{ route('login') }}" class="text-white"><i class="fas fa-pen" style="padding-right:17px;"></i>勉強メモ</a></li>
             <li><a href="{{ route('login') }}" class="text-white"><i class="fas fa-search fa-lg" style="padding-right:12px;"></i>検索</a></li>
             <li><a href="{{ route('login') }}" class="text-white"><i class="far fa-user fa-lg" style="padding-right:14px;"></i>ログイン</a></li>
         @endguest
         @auth
-            <li><a href="/" class="text-white"><i class="far fa-clipboard fa-lg mr-3"></i>みんなの掲示板</a></li>
-            <li><a href="{{ route('showLimited') }}" class="text-white"><i class="fas fa-clipboard fa-lg mr-3"></i>ともだちの掲示板</a></li>
+            <li><a href="/" class="text-white"><i class="far fa-clipboard fa-lg mr-3"></i>掲示板一覧</a></li>
+            <li><a href="{{ route('showTimeline') }}" class="text-white"><i class="fas fa-clipboard fa-lg mr-3"></i>タイムライン</a></li>
             <li><a href="" class="text-white"><i class="fas fa-pen" style="padding-right:17px;"></i>勉強メモ</a></li>
             <li><a href="{{ route('search') }}" class="text-white"><i class="fas fa-search fa-lg" style="padding-right:12px;"></i>検索</a></li>
             <li class="sidebar-dropdown">

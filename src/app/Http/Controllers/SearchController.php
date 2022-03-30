@@ -32,9 +32,9 @@ class SearchController extends Controller
                 $queryBulletin->orWhere('title', 'like', '%'.$keyword.'%');
             }
 
-            // ユーザー、掲示板を作成日時が新しい順（降順）に取得、with()でN+1問題を解決
-            $users = $queryUser->orderBy('created_at', 'desc')->paginate(10);
-            $bulletins = $queryBulletin->orderBy('created_at', 'desc')->with(['user'])->paginate(10);
+            // 掲示板、ユーザーを作成日時が新しい順（降順）に取得、with()でN+1問題を解決、ページネーションは別々に動作するよう記述
+            $bulletins = $queryBulletin->orderBy('created_at', 'desc')->with(['user'])->paginate(10, ['*'], 'bulletins');
+            $users = $queryUser->orderBy('created_at', 'desc')->paginate(10, ['*'], 'users');
 
             return view('search.top', compact('users', 'bulletins','search'));
 

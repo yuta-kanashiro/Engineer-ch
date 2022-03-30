@@ -10,19 +10,16 @@
             <div class="card mb-4">
                 <div class="card-header sunny-morning-gradient">
                     <div class="row">
-                        @if ($bulletin->limited_key === '限定')
-                            <h5 class="font-weight-bold text-white ml-3 mt-4"><i class="fas fa-lock"></i>{{ $bulletin->title }}</h5>
-                        @else
-                        <h5 class="font-weight-bold text-white ml-3 mt-4">{{ $bulletin->title }}</h5>
-                        @endif
-
+                        <div class="col-11">
+                            <h5 class="font-weight-bold text-white mt-4">{{ $bulletin->title }}</h5>
+                        </div>
                         @auth
                             @if (Auth::id() === $bulletin->user->id)
                                 <div class="dropdown ml-auto mr-3">
                                     <a id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="text-white ml-auto">
                                         <i class="fas fa-ellipsis-h"></i>
                                     </a>
-                                    <ul class="dropdown-menu bulletin-menu" aria-labelledby="dropdownMenuButton">
+                                    <ul class="dropdown-menu bulletin-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                                         <li><a class="dropdown-item pl-3 py-2" href="{{ route('bulletin.edit', $bulletin) }}"><i class="fas fa-edit" style="padding-right:8px;"></i>編集する</a></li>
                                         <li><a class="dropdown-item pl-3 py-2" href="#"><i class="far fa-trash-alt" style="padding-right:12px;"></i>削除する</a></li>
                                     </ul>

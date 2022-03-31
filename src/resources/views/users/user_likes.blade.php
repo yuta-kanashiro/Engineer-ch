@@ -15,6 +15,7 @@
                 </div>
                 <a href="{{ route('bulletin.show', $like_bulletin) }}">
                     <h5 class="text-dark font-weight-bold">{{ $like_bulletin->title }}</h5>
+                    <small class="text-muted">いいね数 {{ $like_bulletin->countLikes() }}</small>
                     <small class="text-muted">コメント数 {{ $like_bulletin->countComments() }}</small>
                 </a>
             </div>

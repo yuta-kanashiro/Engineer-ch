@@ -19,9 +19,9 @@ class BulletinController extends Controller
     public function index()
     {
         // 掲示板を投稿日時が新しい順（降順）に取得、with()でN+1問題を解決
-        $bulletins = Bulletin::orderBy('created_at', 'desc')->with(['user'])->get();
+        $bulletins = Bulletin::orderBy('created_at', 'desc')->with(['user'])->paginate(10);
 
-        return view('bulletins.all_top', compact('bulletins'));
+        return view('bulletins.top', compact('bulletins'));
     }
 
     /**
@@ -46,10 +46,6 @@ class BulletinController extends Controller
         $bulletin = new Bulletin();
         //ユーザーID
         $bulletin->user_id = Auth::id();
-        // 限定公開に設定されている場合
-        if($request->limited_key === 'on'){
-            $bulletin->limited_key = '限定';
-        }
 
         //リクエストデータを受け取り、データベースへ保存
         $bulletin->fill($request->all())->save();
@@ -76,27 +72,16 @@ class BulletinController extends Controller
             $updatedTime = $bulletin->created_at->format('Y年m月d日');
         }
 
-        // 限定掲示板のときの認可
-        if($bulletin->limited_key === '限定'){
-            // ログインユーザーではないとき
-            if(!Auth::check()){
-                abort(403, $bulletin->user->name.'をフォローしているユーザーだけが閲覧可能です');
-            }else{
-                // 認可機能（BulletinPolicy）
-                $this->authorize('show', $bulletin);
-            }
-        }
-
         return view('bulletins.show', compact('bulletin', 'comments', 'updatedTime'));
     }
 
-    public function showLimited()
+    public function showTimeline()
     {
         $loginUser = Auth::user();
         // フォローしているユーザーの掲示板とログインユーザー自身の掲示板を投稿日時が新しい順（降順）に取得
-        $bulletinsLimited = Bulletin::whereIn('user_id', $loginUser->followings()->pluck('follower_id'))->orWhere('user_id', $loginUser->id)->latest()->get();
+        $bulletins = Bulletin::whereIn('user_id', $loginUser->followings()->pluck('follower_id'))->orWhere('user_id', $loginUser->id)->latest()->paginate(10);
 
-        return view('bulletins.limited_top', compact('bulletinsLimited'));
+        return view('bulletins.timeline', compact('bulletins'));
     }
 
 

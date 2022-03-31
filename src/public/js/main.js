@@ -113,3 +113,36 @@ $(function(){
         $('.btn-like').addClass('orange-color');
     });
 });
+
+// 検索ページのタプ切り替え
+$(function(){
+    // 非表示にする
+    $('.user').hide();
+    // ボタンのデザイン
+    $('.btn-bulletin').addClass('orange-color');
+    $('.btn-user').addClass('btn-outline-warning');
+
+    $('.btn-bulletin').click(function() {
+        // 表示する
+        $('.bulletin').show();
+        // 非表示にする
+        $('.user').hide();
+        // ボタンのデザイン
+        $('.btn-bulletin').removeClass('btn-outline-warning');
+        $('.btn-bulletin').addClass('orange-color');
+        $('.btn-user').removeClass('orange-color');
+        $('.btn-user').addClass('btn-outline-warning');
+    });
+
+    $('.btn-user').click(function() {
+        // 表示にする
+        $('.user').show();
+        // 非表示にする
+        $('.bulletin').hide();
+        // ボタンのデザイン
+        $('.btn-bulletin').removeClass('orange-color');
+        $('.btn-bulletin').addClass('btn-outline-warning');
+        $('.btn-user').removeClass('btn-outline-warning');
+        $('.btn-user').addClass('orange-color');
+    });
+});

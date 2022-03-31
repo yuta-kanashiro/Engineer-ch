@@ -18,7 +18,6 @@ class CreateBulletinsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('title')->index()->comment('タイトル');
             $table->string('summary')->comment('概要');
-            $table->string('limited_key')->nullable()->comment('限定公開キー');
             $table->timestamps();
             $table->softDeletes();
 

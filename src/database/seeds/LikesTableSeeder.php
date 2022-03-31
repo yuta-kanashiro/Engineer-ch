@@ -94,7 +94,43 @@ class LikesTableSeeder extends Seeder
             'user_id' => '5',
             'bulletin_id' => '7',
             'created_at' => '2021-03-02 07:25:42',
-            'updated_at' => '2021-03-03 07:25:42'
+            'updated_at' => '2022-02-23 07:25:42'
+        ],
+        [
+            'user_id' => '2',
+            'bulletin_id' => '6',
+            'created_at' => '2021-03-02 07:25:42',
+            'updated_at' => '2022-02-23 07:25:42'
+        ],
+        [
+            'user_id' => '3',
+            'bulletin_id' => '6',
+            'created_at' => '2021-03-02 07:25:42',
+            'updated_at' => '2022-02-23 07:25:42'
+        ],
+        [
+            'user_id' => '5',
+            'bulletin_id' => '6',
+            'created_at' => '2021-03-02 07:25:42',
+            'updated_at' => '2022-02-23 07:25:42'
+        ],
+        [
+            'user_id' => '3',
+            'bulletin_id' => '4',
+            'created_at' => '2021-03-02 07:25:42',
+            'updated_at' => '2022-02-23 07:25:42'
+        ],
+        [
+            'user_id' => '5',
+            'bulletin_id' => '4',
+            'created_at' => '2021-03-02 07:25:42',
+            'updated_at' => '2022-02-23 07:25:42'
+        ],
+        [
+            'user_id' => '3',
+            'bulletin_id' => '2',
+            'created_at' => '2021-03-03 07:25:42',
+            'updated_at' => '2022-02-23 07:25:42'
         ],
         ]);
     }

@@ -40,25 +40,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="limited_key" class="col-md-3 text-md-center">公開範囲</label>
-                            <div class="col-md-7">
-                                <div class="custom-control custom-switch">
-                                    @if ($bulletin->limited_key === '限定')
-                                        <input type="checkbox" class="custom-control-input" id="limited_key" checked disabled>
-                                        <label class="custom-control-label" for="limited_key">
-                                            <small class="limited-release ml-2">状態：限定公開（フォロワーだけが閲覧できます）<strong class="text-danger">※変更できません</strong></small>
-                                        </label>
-                                    @else
-                                        <input type="checkbox" class="custom-control-input" id="limited_key" disabled>
-                                        <label class="custom-control-label" for="limited_key">
-                                            <small class="full-release ml-2">状態：公開（全てのユーザーが閲覧できます）<strong class="text-danger">※変更できません</strong></small>
-                                        </label>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn orange-color btn-shadow text-white rounded-pill">
                                 編集

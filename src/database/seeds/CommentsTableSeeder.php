@@ -152,6 +152,48 @@ class CommentsTableSeeder extends Seeder
             'created_at' => '2021-03-29 07:25:42',
             'updated_at' => '2021-03-29 07:25:42'
         ],
+        [
+            'user_id' => '1',
+            'bulletin_id' => '1',
+            'comment' => 'コメント数',
+            'created_at' => '2022-02-23 07:25:42',
+            'updated_at' => '2022-02-23 07:25:42'
+        ],
+        [
+            'user_id' => '2',
+            'bulletin_id' => '1',
+            'comment' => '一番の',
+            'created_at' => '2022-02-23 07:25:42',
+            'updated_at' => '2022-02-23 07:25:42'
+        ],
+        [
+            'user_id' => '3',
+            'bulletin_id' => '1',
+            'comment' => '掲示板',
+            'created_at' => '2022-02-23 07:25:42',
+            'updated_at' => '2022-02-23 07:25:42'
+        ],
+        [
+            'user_id' => '4',
+            'bulletin_id' => '3',
+            'comment' => 'コメント数２位の',
+            'created_at' => '2022-02-23 07:25:42',
+            'updated_at' => '2022-02-23 07:25:42'
+        ],
+        [
+            'user_id' => '5',
+            'bulletin_id' => '3',
+            'comment' => '掲示板',
+            'created_at' => '2022-02-23 07:25:42',
+            'updated_at' => '2022-02-23 07:25:42'
+        ],
+        [
+            'user_id' => '1',
+            'bulletin_id' => '5',
+            'comment' => 'コメント数３位の掲示板',
+            'created_at' => '2022-02-23 07:25:42',
+            'updated_at' => '2022-02-23 07:25:42'
+        ],
         ]);
     }
 }

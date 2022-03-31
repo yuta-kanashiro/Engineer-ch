@@ -32,23 +32,18 @@ class SearchController extends Controller
                 $queryBulletin->orWhere('title', 'like', '%'.$keyword.'%');
             }
 
-            // ユーザー、掲示板を作成日時が新しい順（降順）に取得、with()でN+1問題を解決
-            $users = $queryUser->orderBy('created_at', 'desc')->get();
-            $bulletins = $queryBulletin->orderBy('created_at', 'desc')->with(['user'])->get();
+            // 掲示板、ユーザーを作成日時が新しい順（降順）に取得、with()でN+1問題を解決、ページネーションは別々に動作するよう記述
+            $bulletins = $queryBulletin->orderBy('created_at', 'desc')->with(['user'])->paginate(10, ['*'], 'bulletins');
+            $users = $queryUser->orderBy('created_at', 'desc')->paginate(10, ['*'], 'users');
 
-            return view('search.top', compact('users', 'bulletins'));
+            return view('search.top', compact('users', 'bulletins','search'));
 
         }else{
             // キーワードが入力されていない時
-            // $users = User::orderBy('created_at', 'desc')->get();
-            // $bulletins = Bulletin::orderBy('created_at', 'desc')->get();
+            // いいね数が多い掲示板上位5件を取得
+            $bulletinsLikes = Bulletin::withCount('likes')->orderBy('likes_count', 'desc')->take(5)->get();
 
-            // return view('search.top', compact('users', 'bulletins'));
-
-            $users = '';
-            $bulletins = '';
-
-            return view('search.top', compact('users', 'bulletins'));
+            return view('search.top', compact('bulletinsLikes', 'search'));
         }
     }
 }

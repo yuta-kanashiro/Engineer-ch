@@ -20,13 +20,13 @@
                 </a>
             </div>
         @endforeach
-
-        <div class="d-flex justify-content-center pt-3">
-            {{ $bulletins->links() }}
-        </div>
     @else
         <div class="text-center my-4">
             <p>投稿した掲示板がありません。</p>
         </div>
     @endif
+</div>
+
+<div class="d-flex justify-content-center pt-3">
+    {{ $bulletins->links() }}
 </div>

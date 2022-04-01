@@ -3,7 +3,7 @@
 @section('title', 'みんなの掲示板詳細画面')
 
 @section('content')
-<!-- コメント表示エリア -->
+<!-- 掲示板情報表示エリア -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-9">
@@ -67,6 +67,7 @@
     </div>
 </div>
 
+<!-- コメント入力エリア -->
 <div class="container">
     @guest
         <div class="d-flex justify-content-center mb-3">
@@ -75,7 +76,6 @@
             </a>
         </div>
     @endguest
-    <!-- コメント入力エリア -->
     @auth
         <form method="POST" action="{{ route('add', $bulletin->id) }}">
             @csrf

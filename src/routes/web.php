@@ -11,7 +11,7 @@
 |
 */
 
-// みんなの掲示板表示画面（トップページ）
+// 掲示板一覧表示画面（トップページ）
 Route::get('/', 'BulletinController@index');
 
 Auth::routes();
@@ -41,10 +41,10 @@ Route::group(['middleware' => 'auth'], function () {
         // いいね削除機能
         Route::delete('unlike', 'LikeController@destroy')->name('unlike');
     });
-    // ともだちの掲示板表示画面
+    // タイムライン表示画面
     Route::get('/timeline', 'BulletinController@showTimeline')->name('showTimeline');
     // 投稿画面表示（create）、投稿機能（store）
-    Route::resource('bulletin', 'BulletinController', ['only' => ['create', 'store', 'edit', 'update']]);
+    Route::resource('bulletin', 'BulletinController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
 
     # 検索機能
     Route::get('search', 'SearchController@search')->name('search');

@@ -81,7 +81,8 @@ body{
 }
 
 .bulletin-menu{
-    opacity: 0.9;
+    background-color: rgb(240, 240, 240);
+    opacity: 0.8;
     border: none;
 }
 

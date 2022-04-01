@@ -3,7 +3,7 @@
 @section('title', 'みんなの掲示板詳細画面')
 
 @section('content')
-<!-- コメント表示エリア -->
+<!-- 掲示板情報表示エリア -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-9">
@@ -21,7 +21,14 @@
                                     </a>
                                     <ul class="dropdown-menu bulletin-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                                         <li><a class="dropdown-item pl-3 py-2" href="{{ route('bulletin.edit', $bulletin) }}"><i class="fas fa-edit" style="padding-right:8px;"></i>編集する</a></li>
-                                        <li><a class="dropdown-item pl-3 py-2" href="#"><i class="far fa-trash-alt" style="padding-right:12px;"></i>削除する</a></li>
+                                        <li>
+                                            <form action="{{ route('bulletin.destroy', $bulletin)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button class="dropdown-item pl-3 py-2 delete-btn" type="submit"><i class="far fa-trash-alt" style="padding-right:12px;"></i>削除する</button>
+                                            </form>
+                                        </li>
                                     </ul>
                                 </div>
                             @endif
@@ -60,6 +67,7 @@
     </div>
 </div>
 
+<!-- コメント入力エリア -->
 <div class="container">
     @guest
         <div class="d-flex justify-content-center mb-3">
@@ -68,7 +76,6 @@
             </a>
         </div>
     @endguest
-    <!-- コメント入力エリア -->
     @auth
         <form method="POST" action="{{ route('add', $bulletin->id) }}">
             @csrf

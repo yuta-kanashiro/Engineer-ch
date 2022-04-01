@@ -125,6 +125,8 @@ class BulletinController extends Controller
      */
     public function destroy($id)
     {
+        $bulletin = Bulletin::find($id)->delete();
 
+        return redirect('/');
     }
 }

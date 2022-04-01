@@ -21,7 +21,14 @@
                                     </a>
                                     <ul class="dropdown-menu bulletin-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                                         <li><a class="dropdown-item pl-3 py-2" href="{{ route('bulletin.edit', $bulletin) }}"><i class="fas fa-edit" style="padding-right:8px;"></i>編集する</a></li>
-                                        <li><a class="dropdown-item pl-3 py-2" href="#"><i class="far fa-trash-alt" style="padding-right:12px;"></i>削除する</a></li>
+                                        <li>
+                                            <form action="{{ route('bulletin.destroy', $bulletin)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button class="dropdown-item pl-3 py-2 delete-btn" type="submit"><i class="far fa-trash-alt" style="padding-right:12px;"></i>削除する</button>
+                                            </form>
+                                        </li>
                                     </ul>
                                 </div>
                             @endif

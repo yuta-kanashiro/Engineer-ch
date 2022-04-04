@@ -12,7 +12,7 @@
                             @endif
                         </a>
                     </div>
-                    <div class="col-9">
+                    <div class="col-9 ml-2">
                         <a href="{{ route('user.show', $comment->user) }}" class="user-name-hover text-muted mr-1">{{ $comment->user->name }}</a>
                         <p>{{ $comment->comment }}<small class="text-muted ml-2">{{ $comment->created_at->format('Y/m/d H:i') }}</small></p>
                     </div>

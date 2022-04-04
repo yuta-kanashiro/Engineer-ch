@@ -9,6 +9,7 @@
     float: left;
     font-weight: bold;
     transition: all 0.2s ease;
+    margin:0;
 }
 .tab_item:hover {
     opacity: 0.75;

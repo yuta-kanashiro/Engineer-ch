@@ -28,7 +28,7 @@
                                                 @endif
                                             </a>
                                         </div>
-                                        <div class="col-xl-10 col-9 mx-auto pb-1">
+                                        <div class="col-xl-10 col-9 mx-auto pb-1 ml-2">
                                             <div class="d-flex mb-1">
                                                 <a href="{{ route('user.show', $followingUser) }}"><h5 class="user-name-hover text-dark font-weight-bold pt-2">{{ $followingUser->name }}</h5></a>
                                                 @auth
@@ -74,7 +74,7 @@
                                                 @endif
                                             </a>
                                         </div>
-                                        <div class="col-xl-10 col-9 mx-auto pb-1">
+                                        <div class="col-xl-10 col-9 mx-auto pb-1 ml-2">
                                             <div class="d-flex mb-1">
                                                 <a href="{{ route('user.show', $followerUser) }}"><h5 class="user-name-hover text-dark font-weight-bold pt-2">{{ $followerUser->name }}</h5></a>
                                                 @auth

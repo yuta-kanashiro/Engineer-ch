@@ -21,7 +21,7 @@
             </div>
         @endforeach
     @else
-        <div class="text-center my-4">
+        <div class="text-center mt-3">
             <p>いいねした掲示板がありません。</p>
         </div>
     @endif

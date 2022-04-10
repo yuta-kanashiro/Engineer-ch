@@ -39,13 +39,11 @@ class UserController extends Controller
         $loginUser = Auth::user();
         // リクエストデータ （全て）を取得し、$userUpdateに代入
         $userUpdate = $request->all();
-        // リクエストデータ（profile_image）を取得し、$profileImageに代入
-        $profileImage = $request->profile_image;
 
         // プロフィール画像の変更があった場合
-        if ($profileImage != null) {
-            // storeメソッドで一意のファイル名を自動生成しつつstorage/app/public/profilesに保存し、そのファイル名をファイルパス（$profileImagePath）として生成
-            $profileImagePath = $profileImage->store('public/profiles');
+        if ($request->profile_image != null) {
+            // storeメソッドで一意のファイル名を自動生成しつつstorage/app/public/profilesに保存し、そのファイル名（ファイルパス）を$profileImagePathとして生成
+            $profileImagePath = $request->profile_image->store('public/profiles');
             // $userUpdateのprofile_imageカラムに$profileImagePath（ファイルパス）を保存
             $userUpdate['profile_image'] = $profileImagePath;
         }

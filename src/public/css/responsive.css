@@ -1,4 +1,14 @@
 /* レスポンシブ */
+@media screen and (max-width: 400px){
+    .post-btn{
+        padding: 13px 15px 13px 15px;
+        font-size: 7px;
+    }
+    .post-btn p{
+        display: none;
+    }
+}
+
 @media screen and (max-width: 1100px){
     .test {display: none;}
     .sidebarIconToggle {display: block;}

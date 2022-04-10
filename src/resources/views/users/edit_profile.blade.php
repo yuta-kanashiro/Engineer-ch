@@ -23,7 +23,7 @@
                                 @else
                                     <img id="icon" class="profile-image icon-hover rounded-circle mx-auto" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="150" height="150">
                                 @endif
-                                <input id="profile-image" type="file" class="icon-update form-control @error('profile-image') is-invalid @enderror" name="profile_image" value="{{ old('profile_image', $user->profile_image)}}" accept="image/png, image/jpeg" onchange="previewImage(this);">
+                                <input id="profile-image" type="file" class="icon-update form-control @error('profile-image') is-invalid @enderror" name="profile_image" value="{{ old('profile_image', $user->profile_image)}}" accept="image/*" onchange="previewImage(this);">
                             </label>
                             @error('profile-image')
                                 <span class="invalid-feedback" role="alert">

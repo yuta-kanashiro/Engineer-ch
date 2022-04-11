@@ -23,7 +23,7 @@
                     @if (Auth::user()->profile_image === null)
                         <img class="profile-icon rounded-circle ml-1" src="{{ asset('default.png') }}" alt="プロフィール画像" width="28" height="28">
                     @else
-                        <img class="profile-icon rounded-circle ml-1" src="{{ Storage::url(Auth::user()->profile_image) }}" alt="プロフィール画像" width="28" height="28">
+                        <img class="profile-icon rounded-circle ml-1" src="{{ Auth::user()->profile_image }}" alt="プロフィール画像" width="28" height="28">
                     @endif
                     <span class="ml-2">{{ Auth::user()->name }}</span>
                 </a>

@@ -8,7 +8,7 @@
                             @if ($comment->user->profile_image === null)
                                 <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="40" height="40">
                             @else
-                                <img class="profile-icon rounded-circle" src="{{ Storage::url($comment->user->profile_image) }}" alt="プロフィール画像" width="40" height="40">
+                                <img class="profile-icon rounded-circle" src="{{ $comment->user->profile_image }}" alt="プロフィール画像" width="40" height="40">
                             @endif
                         </a>
                     </div>

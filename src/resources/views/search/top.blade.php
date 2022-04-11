@@ -8,7 +8,7 @@
         <div class="col-lg-9">
             <div class="card description-card sunny-morning-gradient mb-5 text-white">
                 <div class="card-title">
-                    <h4 class="card-title-border mt-5">掲示板・ユーザー検索</h4>
+                    <h4 class="card-title-border mt-5">掲示板・ユーザー検索</h4>
                 </div>
                 <div class="card-body row d-flex justify-content-center">
                     {{-- 検索フォーム --}}
@@ -40,7 +40,7 @@
                                                 @if ($bulletin->user->profile_image === null)
                                                     <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
                                                 @else
-                                                    <img class="profile-icon rounded-circle" src="{{ Storage::url($bulletin->user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
+                                                    <img class="profile-icon rounded-circle" src="{{ $bulletin->user->profile_image }}" alt="プロフィール画像" width="30" height="30">
                                                 @endif
                                             </a>
                                             <small class="mt-1 ml-1 text-muted"><a href="{{ route('user.show', $bulletin->user) }}" class="user-name-hover text-dark">{{ $bulletin->user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>
@@ -74,7 +74,7 @@
                                                     @if ($user->profile_image === null)
                                                         <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="60" height="60">
                                                     @else
-                                                        <img class="profile-icon rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="60" height="60">
+                                                        <img class="profile-icon rounded-circle" src="{{ $user->profile_image }}" alt="プロフィール画像" width="60" height="60">
                                                     @endif
                                                 </a>
                                             </div>
@@ -117,7 +117,7 @@
                                     @if ($bulletin->user->profile_image === null)
                                         <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
                                     @else
-                                        <img class="profile-icon rounded-circle" src="{{ Storage::url($bulletin->user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
+                                        <img class="profile-icon rounded-circle" src="{{ $bulletin->user->profile_image }}" alt="プロフィール画像" width="30" height="30">
                                     @endif
                                 </a>
                                 <small class="mt-1 ml-1 text-muted"><a href="{{ route('user.show', $bulletin->user) }}" class="user-name-hover text-dark">{{ $bulletin->user->name }}</a>が{{ $bulletin->created_at->format('Y年m月d日') }}に投稿</small>

@@ -8,7 +8,7 @@
                         @if ($like_bulletin->user->profile_image === null)
                             <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="30" height="30">
                         @else
-                            <img class="profile-icon rounded-circle" src="{{ Storage::url($like_bulletin->user->profile_image) }}" alt="プロフィール画像" width="30" height="30">
+                            <img class="profile-icon rounded-circle" src="{{ $like_bulletin->user->profile_image }}" alt="プロフィール画像" width="30" height="30">
                         @endif
                     </a>
                     <small class="mt-1 ml-1 text-muted"><a href="{{ route('user.show', $like_bulletin->user) }}" class="user-name-hover text-dark">{{ $like_bulletin->user->name }}</a>が{{ $like_bulletin->created_at->format('Y年m月d日') }}に投稿</small>

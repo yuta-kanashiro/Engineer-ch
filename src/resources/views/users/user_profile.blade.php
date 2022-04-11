@@ -3,7 +3,7 @@
         @if ($user->profile_image === null)
             <img class="rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="140" height="140">
         @else
-            <img class="rounded-circle" src="{{ Storage::url($user->profile_image) }}" alt="プロフィール画像" width="140" height="140">
+            <img class="rounded-circle" src="{{ $user->profile_image }}" alt="プロフィール画像" width="140" height="140">
         @endif
     </div>
     <div class="col-lg-8 ml-2">

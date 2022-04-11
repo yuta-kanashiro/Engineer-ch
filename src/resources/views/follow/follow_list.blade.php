@@ -24,7 +24,7 @@
                                                 @if ($followingUser->profile_image === null)
                                                     <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="60" height="60">
                                                 @else
-                                                    <img class="profile-icon rounded-circle" src="{{ Storage::url($followingUser->profile_image) }}" alt="プロフィール画像" width="60" height="60">
+                                                    <img class="profile-icon rounded-circle" src="{{ $followingUser->profile_image }}" alt="プロフィール画像" width="60" height="60">
                                                 @endif
                                             </a>
                                         </div>
@@ -70,7 +70,7 @@
                                                 @if ($followerUser->profile_image === null)
                                                     <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="60" height="60">
                                                 @else
-                                                    <img class="profile-icon rounded-circle" src="{{ Storage::url($followerUser->profile_image) }}" alt="プロフィール画像" width="60" height="60">
+                                                    <img class="profile-icon rounded-circle" src="{{ $followerUser->profile_image }}" alt="プロフィール画像" width="60" height="60">
                                                 @endif
                                             </a>
                                         </div>

@@ -42,10 +42,21 @@ class UserController extends Controller
 
         // プロフィール画像の変更があった場合
         if ($request->profile_image != null) {
-            // storeメソッドで一意のファイル名を自動生成しつつstorage/app/public/profilesに保存し、そのファイル名（ファイルパス）を$profileImagePathとして生成
-            $profileImagePath = $request->profile_image->store('public/profiles');
-            // $userUpdateのprofile_imageカラムに$profileImagePath（ファイルパス）を保存
-            $userUpdate['profile_image'] = $profileImagePath;
+
+            // ローカル環境と本番環境で分岐
+            if ( app()->isLocal() ) {
+                // storeメソッドで一意のファイル名を自動生成しつつstorage/app/public/profilesに画像ファイルを保存し、そのファイル名（ファイルパス）を$profileImagePathとして生成
+                $profileImagePath = $request->profile_image->store('public/profiles');
+                // urlメソッドで$profileImagePath（ファイルパス）のURLを取得し、$userUpdateのprofile_imageカラムに保存
+                $userUpdate['profile_image'] = Storage::url($profileImagePath);
+            }
+            else {
+                // putメソッドでS3のprofilesフォルダに画像ファイルを保存し、保存したファイル名を$profileImagePathとして生成
+                $profileImagePath = Storage::disk('s3')->put('/profiles', $request->profile_image, 'public');
+                // urlメソッドで$profileImagePath（ファイルパス）のURLを取得し、$userUpdateのprofile_imageカラムに保存
+                $userUpdate['profile_image'] = Storage::disk('s3')->url($profileImagePath);
+            }
+
         }
 
         // $userUpdateのデータを受け取り、データベースへ保存

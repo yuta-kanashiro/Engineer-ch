@@ -42,7 +42,7 @@
                             @if ($bulletin->user->profile_image === null)
                                 <img class="profile-icon rounded-circle" src="{{ asset('default.png') }}" alt="プロフィール画像" width="55" height="55">
                             @else
-                                <img class="profile-icon rounded-circle" src="{{ Storage::url($bulletin->user->profile_image) }}" alt="プロフィール画像" width="50" height="50">
+                                <img class="profile-icon rounded-circle" src="{{ $bulletin->user->profile_image }}" alt="プロフィール画像" width="50" height="50">
                             @endif
                         </a>
                     </div>

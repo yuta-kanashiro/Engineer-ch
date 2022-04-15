@@ -18,8 +18,8 @@ class SearchController extends Controller
         // キーワードが入力された時
         if($search != null){
             // クエリビルダ
-            $queryUser = User::query();
             $queryBulletin = Bulletin::query();
+            $queryUser = User::query();
 
             // 空白を全角スペースに統一する
             $searchWord = mb_convert_kana($search, 's');
@@ -28,15 +28,15 @@ class SearchController extends Controller
 
             // 配列をforeachで回し、orWhere検索のクエリ発行
             foreach($keywords as $keyword) {
-                $queryUser->orWhere('name', 'like', '%'.$keyword.'%');
                 $queryBulletin->orWhere('title', 'like', '%'.$keyword.'%');
+                $queryUser->orWhere('name', 'like', '%'.$keyword.'%');
             }
 
             // 掲示板、ユーザーを作成日時が新しい順（降順）に取得、with()でN+1問題を解決、ページネーションは別々に動作するよう記述
             $bulletins = $queryBulletin->orderBy('created_at', 'desc')->with(['user'])->paginate(10, ['*'], 'bulletins');
             $users = $queryUser->orderBy('created_at', 'desc')->paginate(10, ['*'], 'users');
 
-            return view('search.top', compact('users', 'bulletins','search'));
+            return view('search.top', compact('bulletins', 'users', 'search'));
 
         }else{
             // キーワードが入力されていない時

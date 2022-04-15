@@ -17,7 +17,7 @@
                     <div class="card">
                         @if (!$followingUsers->isEmpty())
                             @foreach ($followingUsers as $followingUser)
-                                <div class="card-body bg-white card-hover border-bottom py-2">
+                                <div class="card-body card-hover border-bottom py-2">
                                     <div class="row">
                                         <div class="col-xl-1 col-1 mx-auto py-2">
                                             <a href="{{ route('user.show', $followingUser) }}" class="icon-hover">

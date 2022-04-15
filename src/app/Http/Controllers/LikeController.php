@@ -18,7 +18,7 @@ class LikeController extends Controller
         // すでにいいね済みではないか？
         $existing = $loginUser->isLike($likeBulletinId);
 
-        // いいね済みではない場合、いいね
+        // いいね済みではない場合、いいねをする
         if (!$existing){
             $loginUser->like($likeBulletinId);
             return back();

@@ -14,12 +14,12 @@
         <!-- Material Design Bootstrap -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
         <!-- カスタマイズ -->
-        <link rel="stylesheet" href="{{ secure_asset('css/sidebar.css') }}">
-        <link rel="stylesheet" href="{{ secure_asset('css/user.css') }}">
-        <link rel="stylesheet" href="{{ secure_asset('css/follow_button.css') }}">
-        <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
-        <link rel="stylesheet" href="{{ secure_asset('css/responsive.css') }}">
-        <link rel="stylesheet" href="{{ secure_asset('css/tabs.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/follow_button.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/tabs.css') }}">
         <title>Engineer-ch</title>
     </head>
 

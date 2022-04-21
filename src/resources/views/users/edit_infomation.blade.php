@@ -6,6 +6,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-9">
+
+            <!-- フラッシュメッセージ -->
+            @if (session('flash_message'))
+                <div class="alert alert-danger text-center">
+                    {{ session('flash_message') }}
+                </div>
+            @endif
+
             <div class="card">
                 <div class="card-header sunny-morning-gradient mb-3">
                     <h4 class="text-center text-white mt-2">{{ __('個人情報') }}</h4>

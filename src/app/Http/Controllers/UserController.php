@@ -78,14 +78,19 @@ class UserController extends Controller
     # 個人情報更新機能
     public function updateInfomation(UpdateUserInfomationRequest $request, $id)
     {
-        // ログイン中のユーザの情報を取得し、$loginUserに代入
-        $loginUser = Auth::user();
-        // リクエストデータ（メールアドレス）を受け取り、データベースに保存
-        $loginUser->fill($request->all());
-        // リクエストデータからnew-passwordカラムを取得してハッシュ化し、$loginUserのpasswordカラムに代入
-        $loginUser->password = bcrypt($request->get('new-password'));
-        // データベースに保存（パスワード）
-        $loginUser->save();
+        // サンプルユーザー（sample1）の場合、メールアドレスとパスワードは変更不可
+        if($id == 1){
+            return back()->with('flash_message', 'サンプルユーザーのため、変更できません');
+        }else{
+            // ログイン中のユーザの情報を取得し、$loginUserに代入
+            $loginUser = Auth::user();
+            // リクエストデータ（メールアドレス）を受け取り、データベースに保存
+            $loginUser->fill($request->all());
+            // リクエストデータからnew-passwordカラムを取得してハッシュ化し、$loginUserのpasswordカラムに代入
+            $loginUser->password = bcrypt($request->get('new-password'));
+            // データベースに保存（パスワード）
+            $loginUser->save();
+        }
 
         return redirect()->route('user.show', Auth::user());
     }

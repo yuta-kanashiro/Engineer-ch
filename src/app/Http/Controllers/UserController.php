@@ -78,7 +78,7 @@ class UserController extends Controller
     # 個人情報更新機能
     public function updateInfomation(UpdateUserInfomationRequest $request, $id)
     {
-        // サンプルユーザー（sample1）の場合、メールアドレスとパスワードは変更不可
+        // サンプルユーザー（sample1）の場合、パスワードとメールアドレスは変更不可
         if($id == 1){
             return back()->with('flash_message', 'サンプルユーザーのため、変更できません');
         }else{
